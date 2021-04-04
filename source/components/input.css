@@ -1,0 +1,69 @@
+.input {
+    position: relative;
+	flex-direction: row;
+    align-items: center;
+    background: #FFFFFF;
+    width: 256px;
+}
+.input__box {
+    position: relative;
+	width: 80%;
+    /* blue */
+    border: 1px solid #459DF5;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 4px 4px 4px 8px;
+    height: 32px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 1;
+    margin: 8px 0px;
+
+    font-family: Ubuntu;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px; 
+}
+.input__reset-icon {
+    position: relative;
+    display: inline-block;
+	border:1px solid transparent;
+	background-color: transparent;
+	vertical-align: middle;
+    cursor: pointer;
+    outline: 0;
+}
+.input__reset-icon:after {
+	content: "X";
+	display: block;
+	width: 9px;
+	height: 9px;
+	position: absolute;
+    right: 25px;
+    bottom: 0;
+	text-align: center;
+	color: #BAD8F5;
+	cursor: pointer;
+}
+.input__box:not(:valid) ~ .input__reset-icon {
+	display: none;
+}
+.input__box_empty::placeholder {
+    left: calc(50% - 244px/2 + 2px);
+    top: calc(50% - 16px/2);
+    color: #BAD8F5;
+}
+
+.input__box_incorrect {
+    /* red */
+    border: 1px solid #F53152;
+    /* Inside Auto Layout */
+    flex-grow: 0;
+}
+
+.input__box_disabled {
+    background: #BAD8F5;
+    flex-grow: 0;
+}
