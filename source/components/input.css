@@ -4,19 +4,13 @@
     --border-color-incorrect: #F53152;
     --element-background-blocked: #BAD8F5;
     --input-placeholder-color: #BAD8F5;
-    --inner-icon-position-left: -28px;
-    --inner-icon-position-top: -7px;
 }
-
 .input-group {
     position: relative;
-	flex-direction: row;
-    align-items: center;
     background: var(--main-background-color);
     width: 256px;
 }
 .input-group__label {
-    font-family: Ubuntu;
     cursor: pointer;
 }
 .input-group__input {
@@ -28,9 +22,6 @@
     height: 32px;
     order: 1;
     margin: 8px 0px;
-    font-family: Ubuntu;
-    font-style: normal;
-    font-weight: normal;
     font-size: 13px;
     line-height: 16px; 
 }
@@ -47,18 +38,15 @@
     position: relative;
     display: inline-block;
 	border: none;
-    left: 0;
-    top: 0;
 	vertical-align: middle;
-    cursor: unset;
     background-color: transparent;
 }
 .input-group__button:after {
 	display: block;
 	position: absolute;
 	cursor: pointer;
-    left: var(--inner-icon-position-left);
-    top: var(--inner-icon-position-top);
+    left: -28px;
+    top: -7px;
     width: 16px;
     height: 16px;
 }
