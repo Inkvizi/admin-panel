@@ -23,7 +23,6 @@
 }
 .searchbar-group__button {
     position: relative;
-    display: inline-block;
 	border: none;
 	vertical-align: middle;
     background-color: transparent;
@@ -32,7 +31,6 @@
     outline: none;
 }
 .searchbar-group__button-search::before, .searchbar-group__button_reset:after {
-	display: block;
 	position: absolute;
 	cursor: pointer;
     top: -7px;

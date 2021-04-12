@@ -1,0 +1,71 @@
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+    input[type=checkbox],
+    input[type=radio] {
+        --active: #fff;
+        --active-inner: #BAD8F5;
+        --focus: 2px rgba(39, 94, 254, .3);
+        --border: #BAD8F5;
+        --border-hover: #BAD8F5;
+        --background: #fff;
+        --disabled: #F6F8FF;
+        --disabled-inner: #E1E6F9;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        height: 16px;
+        width: 16px;
+        outline: none;
+        display: inline-flex;
+        position: relative;
+        cursor: pointer;
+        border: 1px solid var(--bc, var(--border));
+        background: var(--b, var(--background));
+    }
+    input[type=checkbox]:after,
+    input[type=radio]:after {
+        position: absolute;
+        opacity: var(--o, 0);
+        width: 16px;
+        height: 16px;
+        left: -1px;
+        top: -1px;
+        box-sizing: border-box;
+        border: 1px solid var(--active-inner);
+    }
+    input[type=checkbox]:checked,
+    input[type=radio]:checked {
+        --b: var(--active);
+        --bc: var(--active);
+        --o: 1;
+    }
+    input[type=checkbox]:disabled,
+    input[type=radio]:disabled {
+        --b: var(--disabled);
+        cursor: not-allowed;
+        opacity: 0.9;
+    }
+    input[type=checkbox]:disabled:checked,
+    input[type=radio]:disabled:checked {
+        --b: var(--disabled-inner);
+        --bc: var(--border);
+    }
+    input[type=checkbox]:hover:not(:checked):not(:disabled),
+    input[type=radio]:hover:not(:checked):not(:disabled) {
+        --bc: var(--border-hover);
+    }
+    input[type=checkbox] {
+        border-radius: 2px;
+    }
+    input[type=checkbox]::after {
+        border-radius: 2px;
+    }
+    input[type=checkbox]:after {
+        content: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%238055FF' stroke='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10L4.5 6L3 7L7 14L14.5 3.5V3L13 2L7 10Z' stroke='none'/%3E%3C/svg%3E");
+    }
+    input[type=radio] {
+        border-radius: 16px;
+    }
+    input[type=radio]:after {
+        content: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%238055FF' stroke='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='8' r='4' stroke='none'/%3E%3C/svg%3E");
+        border-radius: 16px;
+    }
+}

@@ -36,13 +36,11 @@
 }
 .input-group__button {
     position: relative;
-    display: inline-block;
 	border: none;
 	vertical-align: middle;
     background-color: transparent;
 }
 .input-group__button:after {
-	display: block;
 	position: absolute;
 	cursor: pointer;
     left: -28px;

@@ -1,4 +1,9 @@
 .showcase {
     display: inline-flex;
+}
+.showcase_column {
     flex-direction: column;
+}
+.showcase_row {
+    flex-direction: row;
 }
