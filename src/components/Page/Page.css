@@ -1,0 +1,6 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-family: Ubuntu;
+}

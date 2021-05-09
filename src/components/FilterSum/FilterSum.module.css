@@ -1,0 +1,11 @@
+._ {
+    display: flex;
+    flex-direction: row;
+    margin: 1em 1em;
+    width: 30%;
+    overflow: hidden;
+}
+
+.delimiter {
+    
+}

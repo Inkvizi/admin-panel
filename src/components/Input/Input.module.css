@@ -5,42 +5,51 @@
     --element-background-blocked: #BAD8F5;
     --input-placeholder-color: #BAD8F5;
 }
-.input-group {
+._ {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     position: relative;
-    background: var(--main-background-color);
-    width: 256px;
+    box-sizing: border-box;
 }
-.input-group__label {
+.label {
     cursor: pointer;
 }
-.input-group__input {
-	width: 80%;
+.labelInside {
+    position: absolute;
+    left: 6px;
+    top: 34px;
+    cursor: pointer;
+    width: 1em;
+    text-align: center;
+}
+.input {
+    width: 100%;
+    display: flex;
     border: 1px solid var(--border-color);
     box-sizing: border-box;
     border-radius: 4px;
-    padding: 4px 4px 4px 8px;
+    padding: 4px 4px 4px 22px;
     height: 32px;
     order: 1;
-    margin: 8px 0px;
-    font-size: 13px;
-    line-height: 16px; 
+    margin: 8px 0px; 
 }
-.input-group__input_empty::placeholder {
+.input_empty::placeholder {
     color: var(--input-placeholder-color);
 }
-.input-group__input_incorrect {
+.input_incorrect {
     border: 1px solid var(--border-color-incorrect);
 }
-.input-group__input_disabled {
+.input_disabled {
     background: var(--element-background-blocked);
 }
-.input-group__button {
+.button {
     position: relative;
 	border: none;
 	vertical-align: middle;
     background-color: transparent;
 }
-.input-group__button:after {
+.button:after {
 	position: absolute;
 	cursor: pointer;
     left: -28px;
@@ -49,17 +58,17 @@
     height: 16px;
 }
 
-.input-group__button_reset:after {
+.button_reset:after {
     content: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 16 16' fill='none' stroke='%238055FF' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.5 3.5L3.5 12.5M3.5 3.5L12.5 12.5' fill='none'/%3e%3c/svg%3e");
 }
 
-.input-group__button_blocked:after {
+.button_blocked:after {
     content: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 16 16' fill='%238055FF' stroke='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M4 5C4 2.79086 5.79086 1 8 1C10.2091 1 12 2.79086 12 5V7C13.1046 7 14 7.89543 14 9V13C14 14.1046 13.1046 15 12 15H4C2.89543 15 2 14.1046 2 13V9C2 7.89543 2.89543 7 4 7V5ZM10 5V7H6V5C6 3.89543 6.89543 3 8 3C9.10457 3 10 3.89543 10 5Z' stroke='none'/%3e%3cpath d='M12 5C12 2.8 10.2 1 8 1C5.8 1 4 2.8 4 5L4 9H6V5C6 3.75 7 3 8 3C9 3 10 3.75 10 5V9H12V5Z' stroke='none'/%3e%3c/svg%3e");
 }
 
-.input-group__button:focus {
+.button:focus {
     outline: none;
 }
-.input-group__input:not(:valid) ~ .input-group__button_reset {
+.input:not(:valid) ~ .button_reset {
 	display: none;
 }

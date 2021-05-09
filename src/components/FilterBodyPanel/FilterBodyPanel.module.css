@@ -1,0 +1,8 @@
+._ {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    margin: 2em 3em;
+    background: #EBF0F5;
+    height: 7em;
+}
