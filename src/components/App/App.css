@@ -7,15 +7,6 @@
   font-size: 13px;
   line-height: 1.2em;
 }
-.showcase {
-  display: inline-flex;
-}
-.showcase_column {
-  flex-direction: column;
-}
-.showcase_row {
-  flex-direction: row;
-}
 
 ::-webkit-input-placeholder { /* Chrome */
   color: var(--placeholder-color);

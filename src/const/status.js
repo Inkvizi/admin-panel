@@ -1,0 +1,1 @@
+export const CANCELED = 'Отменен';

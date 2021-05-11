@@ -11,7 +11,7 @@ export function FilterBodyPanel(props) {
             <FilterDate caption="Дата оформления"></FilterDate>
             <FilterSelect caption="Статус заказа" defaultValue="Любой" values={selectValues}></FilterSelect>
             <FilterSum caption="Сумма заказа"></FilterSum>
-            <FilterApplyButton></FilterApplyButton>
+            <FilterApplyButton/>
         </div>
     );
 }
