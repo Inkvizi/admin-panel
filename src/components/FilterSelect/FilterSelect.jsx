@@ -1,19 +1,19 @@
-import './FilterSelect.module.css';
-import styles from './FilterSelect.module.css';
-import {useState} from 'react';
-import {CheckBox} from '../CheckBox/CheckBox';
-import classNames from 'classnames/bind';
+import React, { useState } from 'react'
+import styles from './FilterSelect.module.css'
 
-export function FilterSelect({values, caption, defaultValue}) {
-    const [expanded, setExpanded] = useState(false);
-    
-    const showCheckboxes = () => {setExpanded(!expanded); };
+import { CheckBox } from '../CheckBox/CheckBox'
+import classNames from 'classnames/bind'
 
-    const optionsForSelect = values.map(value => 
+export function FilterSelect ({ values, caption, defaultValue }) {
+  const [expanded, setExpanded] = useState(false)
+
+  const showCheckboxes = () => { setExpanded(!expanded) }
+
+  const optionsForSelect = values.map(value =>
         <CheckBox key={value} value={value}/>
-    );
-    
-    return (
+  )
+
+  return (
         <div className={styles._}>
             <label className={styles.caption}>{caption}</label>
             <div className={styles.selectBox} onClick={showCheckboxes}>
@@ -22,10 +22,9 @@ export function FilterSelect({values, caption, defaultValue}) {
                 </select>
                 <div className={styles.overSelect}></div>
             </div>
-            <div className={classNames(styles.checkboxes, {[styles.checkboxesShow]: expanded})}>
+            <div className={classNames(styles.checkboxes, { [styles.checkboxesShow]: expanded })}>
                 {optionsForSelect}
             </div>
         </div>
-    );
+  )
 }
-
