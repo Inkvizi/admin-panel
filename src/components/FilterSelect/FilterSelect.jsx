@@ -5,10 +5,10 @@ import { CheckBox } from '../CheckBox/CheckBox'
 import classNames from 'classnames/bind'
 
 export function FilterSelect({ values, caption, defaultValue }) {
-  const [expanded, setExpanded] = useState(false)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const showCheckboxes = () => {
-    setExpanded(!expanded)
+    setIsExpanded(!isExpanded)
   }
 
   const optionsForSelect = values.map((value) => (
@@ -26,7 +26,7 @@ export function FilterSelect({ values, caption, defaultValue }) {
       </div>
       <div
         className={classNames(styles.checkboxes, {
-          [styles.checkboxesShow]: expanded,
+          [styles.checkboxesShow]: isExpanded,
         })}>
         {optionsForSelect}
       </div>

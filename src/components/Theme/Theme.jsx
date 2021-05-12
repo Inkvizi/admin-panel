@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Theme.module.css'
 
-export function Theme(props) {
+export function Theme(properties) {
   return (
     <div className={styles._}>
       <div className={styles.icon}></div>

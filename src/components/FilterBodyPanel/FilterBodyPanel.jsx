@@ -5,7 +5,7 @@ import { FilterSum } from '../FilterSum/FilterSum'
 import { FilterApplyButton } from '../FilterApplyButton/FilterApplyButton'
 import { FilterSelect } from '../FilterSelect/FilterSelect'
 
-export function FilterBodyPanel(props) {
+export function FilterBodyPanel(properties) {
   const selectValues = [
     'Новый',
     'Рассчет',

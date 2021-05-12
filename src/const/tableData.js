@@ -1,6 +1,6 @@
 export const tableData = [
   {
-    ID: 14332423,
+    ID: 14_332_423,
     date: '15.02.2020',
     status: 'Отложен',
     itemsCount: 3,
@@ -8,7 +8,7 @@ export const tableData = [
     customerName: 'Иванов Иван Иванович',
   },
   {
-    ID: 324234,
+    ID: 324_234,
     date: '01.02.2021',
     status: 'Выполнен',
     itemsCount: 1,
@@ -16,11 +16,11 @@ export const tableData = [
     customerName: 'Сидоров Сидор Сидорович',
   },
   {
-    ID: 21233333,
+    ID: 21_233_333,
     date: '11.10.2019',
     status: 'Отменен',
     itemsCount: 2,
-    sum: 15434,
+    sum: 15_434,
     customerName: 'Петров Петр Петрович',
   },
 ]

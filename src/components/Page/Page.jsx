@@ -6,7 +6,7 @@ import { Table } from '../Table/Table'
 import { tableData } from '../../const/tableData'
 import { tableHeaderData } from '../../const/tableHeader'
 
-export function Page(props) {
+export function Page(properties) {
   return (
     <div className="page">
       <Header />

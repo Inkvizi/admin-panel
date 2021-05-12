@@ -3,7 +3,7 @@ import styles from './FilterHeaderPanel.module.css'
 import { SearchBox } from '../SearchBox/SearchBox'
 import { FilterShowButton } from '../FilterShowButton/FilterShowButton'
 
-export function FilterHeaderPanel(props) {
+export function FilterHeaderPanel(properties) {
   return (
     <div className={styles._}>
       <SearchBox></SearchBox>
