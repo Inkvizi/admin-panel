@@ -38,7 +38,7 @@ td:first-child {
   color: #6699ff;
 }
 
-.thead {
+.tfoot {
   background: #ebf0f5;
   padding: 8px 12px;
 }
@@ -50,6 +50,6 @@ td:first-child {
   color: #459df5;
 }
 
-.labelCount {
+.selectedCount {
   display: flex;
 }

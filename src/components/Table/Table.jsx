@@ -18,39 +18,31 @@ export function Table({ headerData, data }) {
   ]
   const tableData = data.map((order) => (
     <tr key={order.ID} className={styles.tr}>
-      <td key={order.ID + '_checkBox'} className={styles.tdCheckBox}>
+      <td className={styles.tdCheckBox}>
         <CheckBox />
       </td>
-      <td key={order.ID + '_ID'} className={styles.td}>
-        {order.ID}
-      </td>
-      <td key={order.ID + '_date'} className={styles.td}>
-        {order.date}
-      </td>
-      <td key={order.ID + '_status'} className={styles.td}>
-        {order.status}
-      </td>
-      <td key={order.ID + '_itemsCount'} className={styles.td}>
+      <td className={styles.td}>{order.ID}</td>
+      <td className={styles.td}>{order.date}</td>
+      <td className={styles.td}>{order.status}</td>
+      <td className={styles.td}>
         {order.status === CANCELED ? '\u2014' : order.itemsCount}
       </td>
-      <td key={order.ID + '_sum'} className={styles.td}>
+      <td className={styles.td}>
         {order.status === CANCELED
           ? '\u2014'
           : Number(order.sum).toLocaleString('ru') + ' \u20BD'}{' '}
       </td>
-      <td key={order.ID + '_customerName'} className={styles.td}>
-        {order.customerName}
-      </td>
+      <td className={styles.td}>{order.customerName}</td>
     </tr>
   ))
   return (
     <div className={styles._}>
       <table className={styles.table}>
-        <tfoot className={styles.thead}>
+        <tfoot className={styles.tfoot}>
           <tr>
             <td colSpan="7">
               <div className={styles.footer}>
-                <label className={styles.labelCount}>Выбрано записей: 0</label>
+                <div className={styles.selectedCount}>Выбрано записей: 0</div>
                 <ChangeStatusButton />
                 <DeleteButton />
               </div>
