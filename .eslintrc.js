@@ -6,7 +6,11 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'standard'
+    'standard',
+    'plugin:unicorn/recommended',
+    'plugin:prettier/recommended',
+    'prettier',
+    'prettier/@typescript-eslint'
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -16,8 +20,12 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: [
-    'react'
+    '@typescript-eslint',
+    'prettier',
+    'react',
+    'unicorn'
   ],
   rules: {
+    "unicorn/prevent-abbreviations": "off"
   }
 }

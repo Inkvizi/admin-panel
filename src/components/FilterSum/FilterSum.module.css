@@ -1,10 +1,9 @@
 ._ {
-    display: flex;
-    margin: 1em 1em;
-    width: 30%;
-    overflow: hidden;
+  display: flex;
+  margin: 1em 1em;
+  width: 30%;
+  overflow: hidden;
 }
 
 .delimiter {
-    
 }

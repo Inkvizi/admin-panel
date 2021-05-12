@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './CheckBox.module.css'
 
-export function CheckBox ({ id, value }) {
+export function CheckBox({ id, value }) {
   return (
     <div className={styles._}>
       <label className={styles.checkboxLabel}>

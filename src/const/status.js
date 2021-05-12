@@ -1,1 +1,1 @@
-export const CANCELED = 'Отменен';
+export const CANCELED = 'Отменен'

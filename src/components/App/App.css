@@ -1,5 +1,5 @@
 :root {
-  --placeholder-color: #459DF5;
+  --placeholder-color: #459df5;
 }
 
 .page {
@@ -8,26 +8,30 @@
   line-height: 1.2em;
 }
 
-::-webkit-input-placeholder { /* Chrome */
+::-webkit-input-placeholder {
+  /* Chrome */
   color: var(--placeholder-color);
   font-family: Ubuntu;
   font-size: 13px;
   line-height: 1.2em;
 }
-:-ms-input-placeholder { /* IE 10+ */
+:-ms-input-placeholder {
+  /* IE 10+ */
   color: var(--placeholder-color);
   font-family: Ubuntu;
   font-size: 13px;
   line-height: 1.2em;
 }
-::-moz-placeholder { /* Firefox 19+ */
+::-moz-placeholder {
+  /* Firefox 19+ */
   color: var(--placeholder-color);
   opacity: 1;
   font-family: Ubuntu;
   font-size: 13px;
   line-height: 1.2em;
 }
-:-moz-placeholder { /* Firefox 4 - 18 */
+:-moz-placeholder {
+  /* Firefox 4 - 18 */
   color: var(--placeholder-color);
   opacity: 1;
   font-family: Ubuntu;

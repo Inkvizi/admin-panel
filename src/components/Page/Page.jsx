@@ -6,13 +6,13 @@ import { Table } from '../Table/Table'
 import { tableData } from '../../const/tableData'
 import { tableHeaderData } from '../../const/tableHeader'
 
-export function Page (props) {
+export function Page(props) {
   return (
-        <div className="page">
-            <Header/>
-            <FilterHeaderPanel/>
-            <FilterBodyPanel/>
-            <Table headerData={tableHeaderData} data={tableData}></Table>
-        </div>
+    <div className="page">
+      <Header />
+      <FilterHeaderPanel />
+      <FilterBodyPanel />
+      <Table headerData={tableHeaderData} data={tableData}></Table>
+    </div>
   )
 }
