@@ -1,0 +1,14 @@
+._ {
+  display: flex;
+  height: 2em;
+  position: relative;
+  top: 40px;
+  width: 20%;
+}
+
+.buttonApply {
+  border: none;
+  color: #459df5;
+  background: inherit;
+  cursor: pointer;
+}

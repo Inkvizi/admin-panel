@@ -1,0 +1,6 @@
+._ {
+  display: flex;
+  flex-wrap: wrap;
+  height: 2em;
+  margin: 2em 3em;
+}

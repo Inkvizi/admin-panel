@@ -1,0 +1,29 @@
+._ {
+  display: flex;
+  width: 112px;
+  height: 2em;
+  margin-left: 1em;
+}
+
+.button {
+  display: flex;
+  border: none;
+  background: #459df5;
+  width: 100%;
+  border-radius: 4px;
+  padding: 5px 16px;
+  color: white;
+  cursor: pointer;
+  user-select: none;
+}
+.button:focus {
+  outline: none;
+}
+.button::before {
+  position: relative;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  left: -8px;
+  content: url("data:image/svg+xml;charset=UTF-8,%3csvg viewBox='0 0 16 16' fill='%23FFFFFF' stroke='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12 4H4V5.5L7 8.5V12L9 13V8.5L12 5.5V4Z' stroke='none'/%3e%3c/svg%3e");
+}
