@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import { isFilterPanelOpen } from './isFilterPanelOpen'
+import { FilterHeader } from './FilterHeader'
 
-export const rootReducer = combineReducers({
-  isFilterPanelOpen,
+export default combineReducers({
+  FilterHeader,
 })
