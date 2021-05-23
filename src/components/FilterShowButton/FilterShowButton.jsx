@@ -1,14 +1,13 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
-import { toggleFilterPanelVisible } from '../../store/actionCreators/toggleFilterPanelVisible'
+import { toggleFilterPanelVisible } from '../../actionCreators/toggleFilterPanelVisible'
 import styles from './FilterShowButton.module.css'
 
-export function FilterShowButton(properties) {
+export function FilterShowButton() {
   const dispatch = useDispatch()
-  const changePanelVisible = useCallback(
-    () => dispatch(toggleFilterPanelVisible()),
-    [dispatch]
-  )
+  const changePanelVisible = () => {
+    dispatch(toggleFilterPanelVisible())
+  }
   return (
     <div className={styles._}>
       <button

@@ -1,15 +1,14 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import classNames from 'classnames/bind'
+import cx from 'classnames'
 import styles from './FilterBodyPanel.module.css'
 import { FilterDate } from '../FilterDate/FilterDate'
 import { FilterSum } from '../FilterSum/FilterSum'
 import { FilterApplyButton } from '../FilterApplyButton/FilterApplyButton'
 import { FilterSelect } from '../FilterSelect/FilterSelect'
-import { getIsFilterPanelVisibleState } from '../../store/selectors'
+import { getIsFilterPanelVisibleState } from '../../selectors'
 
 export const FilterBodyPanel = () => {
-  const isVisible = useSelector(getIsFilterPanelVisibleState)
   const selectValues = [
     'Новый',
     'Рассчет',
@@ -18,9 +17,10 @@ export const FilterBodyPanel = () => {
     'Выполнен',
     'Отменен',
   ]
+  const isVisible = useSelector(getIsFilterPanelVisibleState)
   return (
     <div
-      className={classNames(styles._, {
+      className={cx(styles._, {
         [styles._Hide]: !isVisible,
       })}>
       <FilterDate caption="Дата оформления">{isVisible}</FilterDate>

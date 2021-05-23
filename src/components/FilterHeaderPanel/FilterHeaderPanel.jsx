@@ -5,17 +5,17 @@ import { FilterShowButton } from '../FilterShowButton/FilterShowButton'
 
 export function FilterHeaderPanel(properties) {
   const [filterValue, setFilterValue] = useState('')
-  const updateFilter = (value) => {
-    setFilterValue(value)
-  }
-  const clearFilter = () => {
+  const handleClear = () => {
     setFilterValue('')
+  }
+  const handleChange = ({ target: { value } }) => {
+    setFilterValue(value)
   }
   return (
     <div className={styles._}>
       <SearchBox
-        onChange={(event) => updateFilter(event.target.value)}
-        onClear={() => clearFilter()}
+        onChange={handleChange}
+        onClear={handleClear}
         value={filterValue}></SearchBox>
       <FilterShowButton></FilterShowButton>
       <div></div>
