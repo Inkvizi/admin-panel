@@ -9,13 +9,8 @@ export function FilterShowButton() {
     dispatch(toggleFilterPanelVisible())
   }
   return (
-    <div className={styles._}>
-      <button
-        className={styles.button}
-        type="button"
-        onClick={changePanelVisible}>
-        Фильтры
-      </button>
-    </div>
+    <button className={styles._} type="button" onClick={changePanelVisible}>
+      Фильтры
+    </button>
   )
 }

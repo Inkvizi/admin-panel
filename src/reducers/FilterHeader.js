@@ -1,11 +1,11 @@
 import { TOGGLE_FILTER_PANEL_VISIBLE } from '../actions/toggleFilterPanelVisible.js'
 
-const InitialState = {
+const initialState = {
   isFilterPanelOpen: false,
   filterHeaderValue: '',
 }
 
-export const FilterHeader = (state = InitialState, action) => {
+export const FilterHeader = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_FILTER_PANEL_VISIBLE: {
       return {

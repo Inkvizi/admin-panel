@@ -16,9 +16,9 @@ export function FilterHeaderPanel(properties) {
       <SearchBox
         onChange={handleChange}
         onClear={handleClear}
-        value={filterValue}></SearchBox>
-      <FilterShowButton></FilterShowButton>
-      <div></div>
+        value={filterValue}
+      />
+      <FilterShowButton />
     </div>
   )
 }

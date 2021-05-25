@@ -7,16 +7,9 @@ import { FilterSum } from '../FilterSum/FilterSum'
 import { FilterApplyButton } from '../FilterApplyButton/FilterApplyButton'
 import { FilterSelect } from '../FilterSelect/FilterSelect'
 import { getIsFilterPanelVisibleState } from '../../selectors'
+import { selectValues } from '../../const/FilterStatusValues.js'
 
 export const FilterBodyPanel = () => {
-  const selectValues = [
-    'Новый',
-    'Рассчет',
-    'Подтвержден',
-    'Отложен',
-    'Выполнен',
-    'Отменен',
-  ]
   const isVisible = useSelector(getIsFilterPanelVisibleState)
   return (
     <div
