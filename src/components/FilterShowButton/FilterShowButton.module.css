@@ -1,15 +1,10 @@
 ._ {
   display: flex;
+  border: none;
+  background: #459df5;
   width: 112px;
   height: 2em;
   margin-left: 1em;
-}
-
-.button {
-  display: flex;
-  border: none;
-  background: #459df5;
-  width: 100%;
   border-radius: 4px;
   padding: 5px 16px;
   color: white;
