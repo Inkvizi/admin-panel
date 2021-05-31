@@ -1,23 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './FilterHeaderPanel.module.css'
 import { SearchBox } from '../SearchBox/SearchBox'
 import { FilterShowButton } from '../FilterShowButton/FilterShowButton'
 
-export function FilterHeaderPanel(properties) {
-  const [filterValue, setFilterValue] = useState('')
+export function FilterHeaderPanel({ handleFilter, value }) {
   const handleClear = () => {
-    setFilterValue('')
+    handleFilter('')
   }
-  const handleChange = ({ target: { value } }) => {
-    setFilterValue(value)
-  }
+
   return (
     <div className={styles._}>
-      <SearchBox
-        onChange={handleChange}
-        onClear={handleClear}
-        value={filterValue}
-      />
+      <SearchBox onChange={handleFilter} onClear={handleClear} value={value} />
       <FilterShowButton />
     </div>
   )

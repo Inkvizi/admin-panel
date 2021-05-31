@@ -1,4 +1,4 @@
-export const selectValues = [
+export const statuses = [
   'Новый',
   'Рассчет',
   'Подтвержден',

@@ -1,15 +1,12 @@
 ._ {
   display: flex;
+  width: 100%;
   justify-content: left;
-  margin: 2em 3em;
   background: #ebf0f5;
+  margin-top: 1em;
   height: 7em;
 }
 
 ._Hide {
   display: none;
-  justify-content: left;
-  margin: 2em 3em;
-  background: #ebf0f5;
-  height: 7em;
 }

@@ -1,0 +1,12 @@
+._ {
+  display: flex;
+  padding: 12px 16px;
+  background-color: #459DF5;
+  color: white;
+  font-size: 26px;
+  line-height: 32px;
+}
+
+.headerText {
+  color: #BAD8F5;
+}
