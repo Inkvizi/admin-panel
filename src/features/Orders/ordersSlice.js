@@ -36,6 +36,17 @@ export const fetchOrdersByFilters = createAsyncThunk(
   }
 )
 
+export const deleteOrders = createAsyncThunk(
+  'orders/deleteOrders',
+  async ({ ordersIds }, { getState, requestId }) => {
+    const { currentRequestId, loading } = getState().orders
+    if (loading !== 'pending' || requestId !== currentRequestId) {
+      return
+    }
+    return await OrdersAPI.deleteOrders(ordersIds)
+  }
+)
+
 export const ordersrSlice = createSlice({
   name: 'orders',
   initialState: {
@@ -93,6 +104,27 @@ export const ordersrSlice = createSlice({
       }
     })
     builder.addCase(fetchOrdersByFilters.rejected, (state, action) => {
+      const { requestId } = action.meta
+      if (state.loading === 'pending' && state.currentRequestId === requestId) {
+        state.loading = 'idle'
+        state.error = action.error
+        state.currentRequestId = undefined
+      }
+    })
+    builder.addCase(deleteOrders.pending, (state, action) => {
+      if (state.loading.localeCompare('idle') === 0) {
+        state.loading = 'pending'
+        state.currentRequestId = action.meta.requestId
+      }
+    })
+    builder.addCase(deleteOrders.fulfilled, (state, action) => {
+      const { requestId } = action.meta
+      if (state.loading === 'pending' && state.currentRequestId === requestId) {
+        state.loading = 'idle'
+        state.currentRequestId = undefined
+      }
+    })
+    builder.addCase(deleteOrders.rejected, (state, action) => {
       const { requestId } = action.meta
       if (state.loading === 'pending' && state.currentRequestId === requestId) {
         state.loading = 'idle'

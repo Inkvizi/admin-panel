@@ -29,7 +29,7 @@ function generateOrder() {
   }
 }
 
-const orderList = []
+let orderList = []
 
 function cloneOrderArray(sourceArray) {
   const result = []
@@ -89,5 +89,10 @@ export function ordersByFilter(filters, customerNameOrIdValue) {
           .includes(customerNameOrIdValue.toLocaleLowerCase())
     }
     return result
+  })
+}
+export function deleteOrders(ordersIds) {
+  orderList = orderList.filter((order) => {
+    return !ordersIds.includes(order.ID)
   })
 }

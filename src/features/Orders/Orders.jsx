@@ -4,13 +4,18 @@ import { ModalRoute } from 'react-router-modal'
 import './react-router-modal.css'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './Orders.module.css'
+import { unwrapResult } from '@reduxjs/toolkit'
 import { Table } from '../../components/Table/Table'
 import { OrderForm } from '../OrderForm/OrderForm'
 import { Header } from '../../components/Header/Header'
 import { FilterHeaderPanel } from '../../components/FilterHeaderPanel/FilterHeaderPanel'
 import { Filters } from './Filters/Filters'
 import { OrdersAPI } from '../../API/OrdersAPI'
-import { fetchOrdersAll, fetchOrdersByFilters } from './ordersSlice'
+import {
+  fetchOrdersAll,
+  fetchOrdersByFilters,
+  deleteOrders,
+} from './ordersSlice'
 
 export function Orders() {
   const dispatcher = useDispatch()
@@ -19,6 +24,7 @@ export function Orders() {
   }, [])
   const [headerFilter, setHeaderFilter] = useState('')
   const [orderFilters, setOrderFilters] = useState([])
+  const [selectedOrders, setSelectedOrders] = useState([])
 
   const handleCompositeFilter = ({ target: { value } }) => {
     setHeaderFilter(value)
@@ -28,6 +34,7 @@ export function Orders() {
         compositecolumnValue: value,
       })
     )
+    setSelectedOrders([])
   }
 
   const handleFiltersChange = (filters) => {
@@ -38,11 +45,37 @@ export function Orders() {
         compositecolumnValue: headerFilter,
       })
     )
+    setSelectedOrders([])
   }
 
+  const handleDeleteOrders = () => {
+    console.log(orderFilters)
+    dispatcher(deleteOrders({ ordersIds: selectedOrders }))
+      .then(unwrapResult)
+      .then(() =>
+        dispatcher(
+          fetchOrdersByFilters({
+            filters: orderFilters,
+            compositecolumnValue: headerFilter,
+          })
+        )
+      )
+      .then(setSelectedOrders([]))
+  }
+  // eslint-disable-next-line unicorn/consistent-function-scoping
+  const onSelectOrder = (order) => {
+    const index = selectedOrders.indexOf(order.ID)
+    if (index > -1) {
+      selectedOrders.splice(index, 1)
+      setSelectedOrders([...selectedOrders])
+    } else {
+      selectedOrders.push(order.ID)
+      setSelectedOrders([...selectedOrders])
+    }
+  }
   const orders = useSelector((state) => state.orders.entities)
   const history = useHistory()
-  const selectOrder = (order) => {
+  const openOrderInfo = (order) => {
     history.push(`/orders/order/${order.ID}`)
   }
 
@@ -62,7 +95,10 @@ export function Orders() {
             {...properties}
             headerData={headers}
             data={orders}
-            onSelect={selectOrder}
+            selectedData={selectedOrders}
+            onDoubleClick={openOrderInfo}
+            onSelect={onSelectOrder}
+            onDelete={handleDeleteOrders}
           />
         )}
       />

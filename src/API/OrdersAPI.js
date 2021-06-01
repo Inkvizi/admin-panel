@@ -1,4 +1,9 @@
-import { orders, ordersHeaders, ordersByFilter } from '../const/ordersData'
+import {
+  orders,
+  ordersHeaders,
+  ordersByFilter,
+  deleteOrders,
+} from '../const/ordersData'
 
 export const OrdersAPI = {
   getAllOrders: function () {
@@ -10,5 +15,8 @@ export const OrdersAPI = {
   getOrdersByFilters: function (filters, customerNameOrIdValue) {
     const filteredOrders = ordersByFilter(filters, customerNameOrIdValue)
     return filteredOrders
+  },
+  deleteOrders: function (ordersIds) {
+    deleteOrders(ordersIds)
   },
 }
