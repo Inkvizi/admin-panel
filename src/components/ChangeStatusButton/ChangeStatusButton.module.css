@@ -16,8 +16,8 @@
 
 button:disabled,
 button[disabled]{
-  border: 1px solid #999999;
-  background-color: #cccccc;
+  border: 1px solid #999;
+  background-color: #ccc;
   color: #666666;
   border-radius: 4px;
   height: 24px;

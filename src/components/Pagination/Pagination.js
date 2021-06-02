@@ -125,17 +125,17 @@ export function Pagination({
     gotoPage(1)
   }, [])
 
-  const handleClick = (page) => (event_) => {
+  const onClick = (page) => (event_) => {
     event_.preventDefault()
     gotoPage(page)
   }
 
-  const handleMoveLeft = (event_) => {
+  const onMoveLeft = (event_) => {
     event_.preventDefault()
     gotoPage(currentPage - pageNeighbours * 2 - 1)
   }
 
-  const handleMoveRight = (event_) => {
+  const onMoveRight = (event_) => {
     event_.preventDefault()
     gotoPage(currentPage + pageNeighbours * 2 + 1)
   }
@@ -153,7 +153,7 @@ export function Pagination({
               <div
                 key={index}
                 className={styles.page_item}
-                onClick={handleMoveLeft}>
+                onClick={onMoveLeft}>
                 <ArrowLink caption={ARROW_LEFT} />
               </div>
             )
@@ -163,14 +163,14 @@ export function Pagination({
               <div
                 key={index}
                 className={styles.page_item}
-                onClick={handleMoveRight}>
+                onClick={onMoveRight}>
                 <ArrowLink caption={ARROW_RIGHT} />
               </div>
             )
 
           return (
             <div
-              onClick={handleClick(page)}
+              onClick={onClick(page)}
               key={index}
               className={cx(styles.page_item, {
                 [styles.page_item_active]: currentPage === page,

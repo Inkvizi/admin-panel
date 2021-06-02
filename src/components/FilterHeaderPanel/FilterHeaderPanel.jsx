@@ -3,14 +3,14 @@ import styles from './FilterHeaderPanel.module.css'
 import { SearchBox } from '../SearchBox/SearchBox'
 import { FilterShowButton } from '../FilterShowButton/FilterShowButton'
 
-export function FilterHeaderPanel({ handleFilter, value }) {
-  const handleClear = () => {
-    handleFilter('')
+export function FilterHeaderPanel({ onFilter, value }) {
+  const onClear = () => {
+    onFilter('')
   }
 
   return (
     <div className={styles._}>
-      <SearchBox onChange={handleFilter} onClear={handleClear} value={value} />
+      <SearchBox onChange={onFilter} onClear={onClear} value={value} />
       <FilterShowButton />
     </div>
   )

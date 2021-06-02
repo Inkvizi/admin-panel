@@ -28,7 +28,7 @@ export function Orders() {
   const [orderFilters, setOrderFilters] = useState([])
   const [selectedOrders, setSelectedOrders] = useState([])
 
-  const handleCompositeFilter = ({ target: { value } }) => {
+  const onCompositeFilterChange = ({ target: { value } }) => {
     setHeaderFilter(value)
     dispatcher(
       fetchOrdersByFilters({
@@ -39,7 +39,7 @@ export function Orders() {
     setSelectedOrders([])
   }
 
-  const handleFiltersChange = (filters) => {
+  const onFiltersChange = (filters) => {
     setOrderFilters(filters)
     dispatcher(
       fetchOrdersByFilters({
@@ -50,7 +50,7 @@ export function Orders() {
     setSelectedOrders([])
   }
 
-  const handleDeleteOrders = () => {
+  const onDeleteOrders = () => {
     dispatcher(deleteOrders({ ordersIds: selectedOrders }))
       .then(unwrapResult)
       .then(() =>
@@ -66,7 +66,7 @@ export function Orders() {
 
   const [needRefreshData, setNeedRefreshData] = useState(false)
 
-  const handleChangeStatusOrders = (status) => {
+  const onChangeStatusOrders = (status) => {
     dispatcher(
       changeStatusOrders({
         ordersIds: selectedOrders,
@@ -116,10 +116,10 @@ export function Orders() {
     <div className={styles._}>
       <Header caption="Cписок заказов" />
       <FilterHeaderPanel
-        handleFilter={handleCompositeFilter}
+        onFilter={onCompositeFilterChange}
         value={headerFilter}
       />
-      <Filters handleFiltersChange={handleFiltersChange} />
+      <Filters onFiltersChange={onFiltersChange} />
       <Route
         path="/orders"
         render={(properties) => (
@@ -131,8 +131,8 @@ export function Orders() {
             needRefreshData={needRefreshData}
             onDoubleClick={openOrderInfo}
             onSelect={onSelectOrder}
-            onDelete={handleDeleteOrders}
-            onChangeStatus={handleChangeStatusOrders}
+            onDelete={onDeleteOrders}
+            onChangeStatus={onChangeStatusOrders}
           />
         )}
       />

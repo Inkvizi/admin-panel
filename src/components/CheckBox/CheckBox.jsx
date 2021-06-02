@@ -9,7 +9,7 @@ export function CheckBox({ id, value, checked, onClick }) {
           type="checkbox"
           className={styles.checkBox}
           id={id}
-          checked={checked && 'checked'}
+          checked={checked}
           onChange={onClick}
         />
         {value}

@@ -5,14 +5,14 @@ import styles from './Filters.module.css'
 import date from 'date-and-time'
 import { FilterDate } from '../../../components/FilterDate/FilterDate'
 import { FilterSum } from '../../../components/FilterSum/FilterSum'
-import { FlatButton } from '../../../components/FilterApplyButton/FlatButton'
+import { FlatButton } from '../../../components/FlatButton/FlatButton'
 import { FilterSelect } from '../../../components/FilterSelect/FilterSelect'
 import { getIsFilterPanelVisibleState } from '../../../selectors'
 import { statuses } from '../../../const/FilterStatusValues.js'
 import { Filter } from './Filter'
 import { dateFormat } from '../../../const/dateFormat'
 
-export const Filters = ({ handleFiltersChange }) => {
+export const Filters = ({ onFiltersChange }) => {
   const [orderDateLessFilter, setOrderDateLessFilter] = useState('')
   const [orderDateAboveFilter, setOrderDateAboveFilter] = useState('')
   const [orderSumLessFilter, setOrderSumLessFilter] = useState('')
@@ -45,7 +45,7 @@ export const Filters = ({ handleFiltersChange }) => {
     if (orderStatusFilter) {
       filters.push(new Filter('status', orderStatusFilter).setOperationEquals())
     }
-    handleFiltersChange(filters)
+    onFiltersChange(filters)
   }
   const onChangeFilterDateLess = ({ target: { value } }) => {
     setOrderDateLessFilter(value)

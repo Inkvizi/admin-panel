@@ -4,7 +4,7 @@ import styles from './FlatButton.module.css'
 export function FlatButton({ caption, onClick }) {
   return (
     <div className={styles._}>
-      <div className={styles.label}></div>
+      <div className={styles.label} />
       <button className={styles.buttonApply} type="button" onClick={onClick}>
         {caption}
       </button>
