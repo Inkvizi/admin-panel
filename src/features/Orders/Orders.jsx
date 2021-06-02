@@ -23,6 +23,7 @@ export function Orders() {
   useEffect(() => {
     dispatcher(fetchOrdersAll())
   }, [])
+
   const [headerFilter, setHeaderFilter] = useState('')
   const [orderFilters, setOrderFilters] = useState([])
   const [selectedOrders, setSelectedOrders] = useState([])
@@ -71,17 +72,27 @@ export function Orders() {
         ordersIds: selectedOrders,
         status: status,
       })
-    ).then(() => {
-      dispatcher(
-        fetchOrdersByFilters({
-          filters: orderFilters,
-          compositecolumnValue: headerFilter,
-        })
-      ).then(() => {
-        setNeedRefreshData(true)
-        setNeedRefreshData(false)
+    )
+      .then(unwrapResult)
+      .then(() => {
+        dispatcher(
+          fetchOrdersByFilters({
+            filters: orderFilters,
+            compositecolumnValue: headerFilter,
+          })
+        )
+          .then(unwrapResult)
+          .then(() => {
+            setNeedRefreshData(true)
+            setNeedRefreshData(false)
+          })
+          .catch((rejectedValueOrSerializedError) =>
+            console.log('inner catch', rejectedValueOrSerializedError)
+          )
       })
-    })
+      .catch((rejectedValueOrSerializedError) =>
+        console.log('inner catch', rejectedValueOrSerializedError)
+      )
   }
 
   const onSelectOrder = (order) => {
