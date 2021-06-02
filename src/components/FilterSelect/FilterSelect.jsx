@@ -38,7 +38,7 @@ export function FilterSelect({
         <select className={styles.select} id="selectBoxFilter">
           <option>{selectedValue || defaultValue}</option>
         </select>
-        <div className={styles.overSelect}></div>
+        <div className={styles.overSelect} />
       </div>
       <div
         className={classNames(styles.checkboxes, {

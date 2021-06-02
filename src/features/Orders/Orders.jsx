@@ -19,18 +19,21 @@ import {
 } from './ordersSlice'
 
 export function Orders() {
-  const dispatcher = useDispatch()
+  const dispatch = useDispatch()
   useEffect(() => {
-    dispatcher(fetchOrdersAll())
+    dispatch(fetchOrdersAll())
   }, [])
 
+  const history = useHistory()
+  const orders = useSelector((state) => state.orders.entities)
   const [headerFilter, setHeaderFilter] = useState('')
   const [orderFilters, setOrderFilters] = useState([])
   const [selectedOrders, setSelectedOrders] = useState([])
+  const [needRefreshData, setNeedRefreshData] = useState(false)
 
   const onCompositeFilterChange = ({ target: { value } }) => {
     setHeaderFilter(value)
-    dispatcher(
+    dispatch(
       fetchOrdersByFilters({
         filters: orderFilters,
         compositecolumnValue: value,
@@ -41,7 +44,7 @@ export function Orders() {
 
   const onFiltersChange = (filters) => {
     setOrderFilters(filters)
-    dispatcher(
+    dispatch(
       fetchOrdersByFilters({
         filters: filters,
         compositecolumnValue: headerFilter,
@@ -51,10 +54,10 @@ export function Orders() {
   }
 
   const onDeleteOrders = () => {
-    dispatcher(deleteOrders({ ordersIds: selectedOrders }))
+    dispatch(deleteOrders({ ordersIds: selectedOrders }))
       .then(unwrapResult)
       .then(() =>
-        dispatcher(
+        dispatch(
           fetchOrdersByFilters({
             filters: orderFilters,
             compositecolumnValue: headerFilter,
@@ -64,10 +67,8 @@ export function Orders() {
       .then(setSelectedOrders([]))
   }
 
-  const [needRefreshData, setNeedRefreshData] = useState(false)
-
   const onChangeStatusOrders = (status) => {
-    dispatcher(
+    dispatch(
       changeStatusOrders({
         ordersIds: selectedOrders,
         status: status,
@@ -75,7 +76,7 @@ export function Orders() {
     )
       .then(unwrapResult)
       .then(() => {
-        dispatcher(
+        dispatch(
           fetchOrdersByFilters({
             filters: orderFilters,
             compositecolumnValue: headerFilter,
@@ -105,8 +106,7 @@ export function Orders() {
       setSelectedOrders([...selectedOrders])
     }
   }
-  const orders = useSelector((state) => state.orders.entities)
-  const history = useHistory()
+
   const openOrderInfo = (order) => {
     history.push(`/orders/order/${order.ID}`)
   }

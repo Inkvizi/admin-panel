@@ -3,7 +3,7 @@ import { statuses } from './FilterStatusValues'
 // import { dateFormat } from './dateFormat'
 // import dateFormatter from 'date-and-time'
 
-const ordersCount = 200
+const ORDERD_COUNT = 200
 
 faker.locale = 'ru'
 
@@ -20,37 +20,21 @@ function generateOrder() {
       max: 30,
     }),
     sum: faker.datatype.number({ min: 1, max: 20_000, precision: 0.01 }),
-    customerName:
-      faker.name.lastName() +
-      ' ' +
-      faker.name.firstName() +
-      ' ' +
-      faker.name.middleName(),
+    customerName: `${faker.name.lastName()} ${faker.name.firstName()} ${faker.name.middleName()}`,
   }
 }
 
 let orderList = []
 
 function cloneOrderArray(sourceArray) {
-  const result = []
-  for (const element of sourceArray) {
-    result.push({
-      ID: element.ID,
-      date: element.date,
-      status: element.status,
-      itemsCount: element.itemsCount,
-      sum: element.sum,
-      customerName: element.customerName,
-    })
-  }
-  return result
+  return sourceArray.map((data) => ({ ...data }))
 }
 
 function generateOrderList() {
   if (orderList.length > 0) {
     return cloneOrderArray(orderList)
   }
-  for (let counter = 0; counter < ordersCount; counter++) {
+  for (let counter = 0; counter < ORDERD_COUNT; counter++) {
     orderList.push(generateOrder())
   }
   return cloneOrderArray(orderList)

@@ -14,7 +14,7 @@ export function FilterSum({
       <Input
         id="filterSumFrom"
         caption={caption}
-        placeholder="&#8381;"
+        placeholder="₽"
         captionInside="от"
         onChange={onChangeFilterAbove}
         value={valueAbove}
@@ -22,7 +22,7 @@ export function FilterSum({
       <div className="delimiter">&nbsp;</div>
       <Input
         id="filterSumTo"
-        placeholder="&#8381;"
+        placeholder="₽"
         captionInside="до"
         onChange={onChangeFilterLess}
         value={valueLess}

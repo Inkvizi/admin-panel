@@ -19,8 +19,7 @@ export function Table({
     setCurrentOrders([...data])
   }, [])
 
-  const onPageChanged = (paginationData) => {
-    const { currentPage, pageLimit } = paginationData
+  const onPageChanged = ({ currentPage, pageLimit }) => {
     const offset = (currentPage - 1) * pageLimit
     setCurrentOrders(data.slice(offset, offset + pageLimit))
   }

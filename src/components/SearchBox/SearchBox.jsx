@@ -5,7 +5,7 @@ import classNames from 'classnames/bind'
 export function SearchBox({ value, onChange, onClear }) {
   return (
     <div className={styles._}>
-      <button className={styles.button_search} type="button"></button>
+      <button className={styles.button_search} type="button" />
       <input
         type="text"
         className={styles.searchbar}

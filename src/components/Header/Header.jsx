@@ -6,7 +6,7 @@ export function Header({ caption }) {
   return (
     <div className={styles._}>
       <div className={styles.name}>{caption}</div>
-      <Theme></Theme>
+      <Theme />
     </div>
   )
 }

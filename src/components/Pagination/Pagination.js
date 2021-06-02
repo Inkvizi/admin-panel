@@ -125,18 +125,18 @@ export function Pagination({
     gotoPage(1)
   }, [])
 
-  const onClick = (page) => (event_) => {
-    event_.preventDefault()
+  const onClick = (page) => (event) => {
+    event.preventDefault()
     gotoPage(page)
   }
 
-  const onMoveLeft = (event_) => {
-    event_.preventDefault()
+  const onMoveLeft = (event) => {
+    event.preventDefault()
     gotoPage(currentPage - pageNeighbours * 2 - 1)
   }
 
-  const onMoveRight = (event_) => {
-    event_.preventDefault()
+  const onMoveRight = (event) => {
+    event.preventDefault()
     gotoPage(currentPage + pageNeighbours * 2 + 1)
   }
 
