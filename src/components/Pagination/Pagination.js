@@ -30,6 +30,7 @@ export function Pagination({
   onPageChanged,
   pageLimit = 15,
   pageNeighbours = 0,
+  needRefreshPage,
 }) {
   const pageNeighbourslocal = pageNeighbours > 2 ? 2 : pageNeighbours
 
@@ -42,6 +43,9 @@ export function Pagination({
   }, [totalRecords, pageLimit, totalPages])
 
   const [currentPage, setCurrentPage] = useState(1)
+  useEffect(() => {
+    gotoPage(currentPage)
+  }, [needRefreshPage])
 
   /**
    * Допустим у нас есть 10 страниц и мы установили pageNeighbours = 2

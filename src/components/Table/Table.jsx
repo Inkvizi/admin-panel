@@ -8,9 +8,11 @@ export function Table({
   headerData,
   data,
   selectedData,
+  needRefreshData,
   onDoubleClick,
   onSelect,
   onDelete,
+  onChangeStatus,
 }) {
   const [currentOrders, setCurrentOrders] = useState([])
   useEffect(() => {
@@ -30,7 +32,9 @@ export function Table({
           onPageChanged={onPageChanged}
           totalRecords={data.length}
           selectedRecords={selectedData.length}
+          needRefreshPage={needRefreshData}
           onDelete={onDelete}
+          onChangeStatus={onChangeStatus}
         />
         <TableHeader headerData={headerData} />
         <TableBody

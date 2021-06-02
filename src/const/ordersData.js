@@ -96,3 +96,11 @@ export function deleteOrders(ordersIds) {
     return !ordersIds.includes(order.ID)
   })
 }
+export function changeStatusOrders(ordersIds, status) {
+  orderList = orderList.map((order) => {
+    if (ordersIds.includes(order.ID)) {
+      order.status = status
+    }
+    return order
+  })
+}

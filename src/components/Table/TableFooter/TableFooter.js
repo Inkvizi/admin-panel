@@ -4,12 +4,15 @@ import { ChangeStatusButton } from '../../ChangeStatusButton/ChangeStatusButton'
 import { DeleteButton } from '../../DeleteButton/DeleteButton'
 import { DeleteButtonMenu } from '../../DeleteButton/DeleteButtonMenu'
 import { Pagination } from '../../Pagination/Pagination'
+import { ChangeStatusButtonMenu } from '../../ChangeStatusButton/ChangeStatusButtonMenu'
 
 export function TableFooter({
   onPageChanged,
   totalRecords,
   selectedRecords,
+  needRefreshPage,
   onDelete,
+  onChangeStatus,
 }) {
   const [deleteClicked, setDeleteClicked] = useState(false)
   const onDeleteButtonClick = () => {
@@ -22,6 +25,15 @@ export function TableFooter({
     }
   }
 
+  const [changeStatusClicked, setChangeStatusClicked] = useState(false)
+  const onChangeStatusClick = () => {
+    setChangeStatusClicked(!changeStatusClicked)
+  }
+  const onChangeStatusMenuSelect = (value) => {
+    setChangeStatusClicked(false)
+    onChangeStatus(value)
+  }
+
   return (
     <tfoot className={styles._}>
       <tr>
@@ -30,7 +42,16 @@ export function TableFooter({
             <div className={styles.selectedCount}>
               Выбрано записей: {selectedRecords}
             </div>
-            <ChangeStatusButton />
+            <div className={styles.menu}>
+              <ChangeStatusButtonMenu
+                isShow={changeStatusClicked}
+                onMenuItemSelect={onChangeStatusMenuSelect}
+              />
+              <ChangeStatusButton
+                disabled={selectedRecords === 0}
+                onClick={onChangeStatusClick}
+              />
+            </div>
             <div className={styles.menu}>
               <DeleteButtonMenu
                 recordsCount={selectedRecords}
@@ -47,6 +68,7 @@ export function TableFooter({
               onPageChanged={onPageChanged}
               pageLimit={9}
               pageNeighbours={2}
+              needRefreshPage={needRefreshPage}
             />
           </div>
         </td>

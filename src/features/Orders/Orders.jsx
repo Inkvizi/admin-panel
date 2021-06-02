@@ -15,6 +15,7 @@ import {
   fetchOrdersAll,
   fetchOrdersByFilters,
   deleteOrders,
+  changeStatusOrders,
 } from './ordersSlice'
 
 export function Orders() {
@@ -49,7 +50,6 @@ export function Orders() {
   }
 
   const handleDeleteOrders = () => {
-    console.log(orderFilters)
     dispatcher(deleteOrders({ ordersIds: selectedOrders }))
       .then(unwrapResult)
       .then(() =>
@@ -62,7 +62,28 @@ export function Orders() {
       )
       .then(setSelectedOrders([]))
   }
-  // eslint-disable-next-line unicorn/consistent-function-scoping
+
+  const [needRefreshData, setNeedRefreshData] = useState(false)
+
+  const handleChangeStatusOrders = (status) => {
+    dispatcher(
+      changeStatusOrders({
+        ordersIds: selectedOrders,
+        status: status,
+      })
+    ).then(() => {
+      dispatcher(
+        fetchOrdersByFilters({
+          filters: orderFilters,
+          compositecolumnValue: headerFilter,
+        })
+      ).then(() => {
+        setNeedRefreshData(true)
+        setNeedRefreshData(false)
+      })
+    })
+  }
+
   const onSelectOrder = (order) => {
     const index = selectedOrders.indexOf(order.ID)
     if (index > -1) {
@@ -96,9 +117,11 @@ export function Orders() {
             headerData={headers}
             data={orders}
             selectedData={selectedOrders}
+            needRefreshData={needRefreshData}
             onDoubleClick={openOrderInfo}
             onSelect={onSelectOrder}
             onDelete={handleDeleteOrders}
+            onChangeStatus={handleChangeStatusOrders}
           />
         )}
       />

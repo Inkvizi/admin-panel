@@ -3,6 +3,7 @@ import {
   ordersHeaders,
   ordersByFilter,
   deleteOrders,
+  changeStatusOrders,
 } from '../const/ordersData'
 
 export const OrdersAPI = {
@@ -18,5 +19,8 @@ export const OrdersAPI = {
   },
   deleteOrders: function (ordersIds) {
     deleteOrders(ordersIds)
+  },
+  changeStatusOrders: function (ordersIds, status) {
+    changeStatusOrders(ordersIds, status)
   },
 }
