@@ -5,6 +5,9 @@ import { CheckBox } from '../../CheckBox/CheckBox'
 
 export function TableHeader({ headerData }) {
   const [headerSelected, setHeaderSelected] = useState('')
+  const onClick = (header) => () => {
+    setHeaderSelected(header)
+  }
   return (
     <thead className={styles._}>
       <tr>
@@ -12,14 +15,13 @@ export function TableHeader({ headerData }) {
           <CheckBox />
         </th>
         {headerData.map((header) => {
-          const onClick = () => setHeaderSelected(header)
           return (
             <th
               key={header}
               className={cx(styles.th, {
                 [styles.th_active]: headerSelected === header,
               })}
-              onClick={onClick}>
+              onClick={onClick(header)}>
               {header}
             </th>
           )

@@ -8,7 +8,7 @@ export function Table({
   headerData,
   data,
   selectedData,
-  needRefreshData,
+  isNeedRefreshData,
   onDoubleClick,
   onSelect,
   onDelete,
@@ -18,7 +18,6 @@ export function Table({
   useEffect(() => {
     setCurrentOrders([...data])
   }, [])
-  console.log(selectedData)
 
   const onPageChanged = ({ currentPage, pageLimit }) => {
     const offset = (currentPage - 1) * pageLimit
@@ -32,7 +31,7 @@ export function Table({
           onPageChanged={onPageChanged}
           totalRecords={data.length}
           selectedRecords={selectedData.length}
-          needRefreshPage={needRefreshData}
+          isNeedRefreshPage={isNeedRefreshData}
           onDelete={onDelete}
           onChangeStatus={onChangeStatus}
         />

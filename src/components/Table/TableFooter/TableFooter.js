@@ -10,11 +10,13 @@ export function TableFooter({
   onPageChanged,
   totalRecords,
   selectedRecords,
-  needRefreshPage,
+  isNeedRefreshPage,
   onDelete,
   onChangeStatus,
 }) {
   const [deleteClicked, setDeleteClicked] = useState(false)
+  const [changeStatusClicked, setChangeStatusClicked] = useState(false)
+
   const onDeleteButtonClick = () => {
     setDeleteClicked(true)
   }
@@ -25,7 +27,6 @@ export function TableFooter({
     }
   }
 
-  const [changeStatusClicked, setChangeStatusClicked] = useState(false)
   const onChangeStatusClick = () => {
     setChangeStatusClicked(!changeStatusClicked)
   }
@@ -68,7 +69,7 @@ export function TableFooter({
               onPageChanged={onPageChanged}
               pageLimit={9}
               pageNeighbours={2}
-              needRefreshPage={needRefreshPage}
+              isNeedRefreshPage={isNeedRefreshPage}
             />
           </div>
         </td>

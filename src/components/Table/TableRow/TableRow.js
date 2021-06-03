@@ -4,7 +4,7 @@ import { CheckBox } from '../../CheckBox/CheckBox'
 import { CANCELED } from '../../../const/status'
 
 const emDash = '\u2014'
-const Rub = ' \u20BD'
+const Rub = '\u20BD'
 
 export function TableRow({ order, onDoubleClick, onClick, checked }) {
   return (
@@ -21,7 +21,7 @@ export function TableRow({ order, onDoubleClick, onClick, checked }) {
       <td className={styles.td}>
         {order.status === CANCELED
           ? emDash
-          : Number(order.sum).toLocaleString('ru') + Rub}{' '}
+          : `${Number(order.sum).toLocaleString('ru')} ${Rub}`}
       </td>
       <td className={styles.td}>{order.customerName}</td>
     </tr>

@@ -8,7 +8,6 @@ export function TableBody({ data, onDoubleClick, onSelect, selectedData }) {
   const handleDoubleClick = (order) => () => {
     onDoubleClick(order)
   }
-  console.log(selectedData)
   return (
     <tbody>
       {data.map((order) => {

@@ -9,12 +9,13 @@ export function Input({
   id,
   onChange,
   value,
+  className,
 }) {
   const onClear = () => {
     onChange({ target: { value: '' } })
   }
   return (
-    <div className={styles._}>
+    <div className={cx(styles._, className)}>
       <label className={styles.label} htmlFor={id}>
         {caption}
       </label>

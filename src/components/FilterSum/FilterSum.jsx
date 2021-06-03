@@ -18,8 +18,8 @@ export function FilterSum({
         captionInside="от"
         onChange={onChangeFilterAbove}
         value={valueAbove}
+        className={styles.input_left}
       />
-      <div className="delimiter">&nbsp;</div>
       <Input
         id="filterSumTo"
         placeholder="₽"

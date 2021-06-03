@@ -29,7 +29,7 @@ export function Orders() {
   const [headerFilter, setHeaderFilter] = useState('')
   const [orderFilters, setOrderFilters] = useState([])
   const [selectedOrders, setSelectedOrders] = useState([])
-  const [needRefreshData, setNeedRefreshData] = useState(false)
+  const [isNeedRefreshData, setIsNeedRefreshData] = useState(false)
 
   const onCompositeFilterChange = ({ target: { value } }) => {
     setHeaderFilter(value)
@@ -84,8 +84,8 @@ export function Orders() {
         )
           .then(unwrapResult)
           .then(() => {
-            setNeedRefreshData(true)
-            setNeedRefreshData(false)
+            setIsNeedRefreshData(true)
+            setIsNeedRefreshData(false)
           })
           .catch((rejectedValueOrSerializedError) =>
             console.log('inner catch', rejectedValueOrSerializedError)
@@ -125,7 +125,7 @@ export function Orders() {
             headerData={headers}
             data={orders}
             selectedData={selectedOrders}
-            needRefreshData={needRefreshData}
+            isNeedRefreshData={isNeedRefreshData}
             onDoubleClick={openOrderInfo}
             onSelect={onSelectOrder}
             onDelete={onDeleteOrders}
