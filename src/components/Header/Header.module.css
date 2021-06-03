@@ -1,7 +1,9 @@
 ._ {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  margin: 2em 3em;
+  margin-bottom: 2em;
+  width: 100%;
 }
 .name {
   font-weight: bold;

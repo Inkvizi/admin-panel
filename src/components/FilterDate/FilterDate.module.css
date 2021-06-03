@@ -1,9 +1,10 @@
 ._ {
   display: flex;
   margin: 1em 1em;
-  width: 30%;
+  max-width: 30%;
   overflow: hidden;
 }
 
-.delimiter {
+.input_left {
+  margin-right: 4px;
 }

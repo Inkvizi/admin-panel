@@ -1,6 +1,7 @@
 ._ {
   display: flex;
-  margin: 2em 3em;
+  width: 100%;
+  margin-top: 2em;
 }
 
 .table {
@@ -11,45 +12,8 @@
   text-align: left;
 }
 
-.th {
-  font-weight: normal;
-  color: white;
-  border-bottom: 2px solid #6678b1;
-  padding: 8px 12px;
-  background: #459df5;
-  cursor: pointer;
-  user-select: none;
-}
-
 table th:first-child,
 td:first-child {
   width: 16px;
   padding: 8px 0px 8px 12px;
-}
-
-.td {
-  border-bottom: 1px solid #ebf0f5;
-  padding: 9px 8px;
-  transition: 0.3s linear;
-  cursor: unset;
-}
-
-.tr:hover td {
-  color: #6699ff;
-}
-
-.tfoot {
-  background: #ebf0f5;
-  padding: 8px 12px;
-}
-
-.footer {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  color: #459df5;
-}
-
-.selectedCount {
-  display: flex;
 }
