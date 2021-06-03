@@ -26,31 +26,46 @@ export function Orders() {
 
   const history = useHistory()
   const orders = useSelector((state) => state.orders.entities)
+
   const [headerFilter, setHeaderFilter] = useState('')
   const [orderFilters, setOrderFilters] = useState([])
   const [selectedOrders, setSelectedOrders] = useState([])
   const [isNeedRefreshData, setIsNeedRefreshData] = useState(false)
+  const [sortField, setSortField] = useState({})
+
+  const applyFilterAndSort = (compositeFIlter, filters, sortField) => {
+    return dispatch(
+      fetchOrdersByFilters({
+        filters: orderFilters,
+        compositecolumnValue: compositeFIlter,
+        sortField: sortField,
+      })
+    )
+  }
 
   const onCompositeFilterChange = ({ target: { value } }) => {
     setHeaderFilter(value)
-    dispatch(
-      fetchOrdersByFilters({
-        filters: orderFilters,
-        compositecolumnValue: value,
-      })
-    )
+    applyFilterAndSort(value, orderFilters, sortField)
     setSelectedOrders([])
   }
 
   const onFiltersChange = (filters) => {
     setOrderFilters(filters)
-    dispatch(
-      fetchOrdersByFilters({
-        filters: filters,
-        compositecolumnValue: headerFilter,
-      })
-    )
+    applyFilterAndSort(headerFilter, filters, sortField)
     setSelectedOrders([])
+  }
+
+  const onHeaderClick = (header) => {
+    setSortField(header)
+    applyFilterAndSort(headerFilter, orderFilters, header)
+      .then(unwrapResult)
+      .then(() => {
+        setIsNeedRefreshData(true)
+        setIsNeedRefreshData(false)
+      })
+      .catch((rejectedValueOrSerializedError) =>
+        console.log('inner catch', rejectedValueOrSerializedError)
+      )
   }
 
   const onDeleteOrders = () => {
@@ -130,6 +145,7 @@ export function Orders() {
             onSelect={onSelectOrder}
             onDelete={onDeleteOrders}
             onChangeStatus={onChangeStatusOrders}
+            onHeaderClick={onHeaderClick}
           />
         )}
       />

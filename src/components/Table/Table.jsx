@@ -13,8 +13,10 @@ export function Table({
   onSelect,
   onDelete,
   onChangeStatus,
+  onHeaderClick,
 }) {
   const [currentOrders, setCurrentOrders] = useState([])
+
   useEffect(() => {
     setCurrentOrders([...data])
   }, [])
@@ -35,7 +37,7 @@ export function Table({
           onDelete={onDelete}
           onChangeStatus={onChangeStatus}
         />
-        <TableHeader headerData={headerData} />
+        <TableHeader headerData={headerData} onClick={onHeaderClick} />
         <TableBody
           data={currentOrders}
           onDoubleClick={onDoubleClick}

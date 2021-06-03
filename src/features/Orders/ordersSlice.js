@@ -20,14 +20,18 @@ export const fetchOrdersAll = createAsyncThunk(
 
 export const fetchOrdersByFilters = createAsyncThunk(
   'orders/fetchByFilter',
-  async ({ filters, compositecolumnValue }, { getState, requestId }) => {
+  async (
+    { filters, compositecolumnValue, sortField },
+    { getState, requestId }
+  ) => {
     const { currentRequestId, loading } = getState().orders
     if (loading !== 'pending' || requestId !== currentRequestId) {
       return
     }
     const response = await OrdersAPI.getOrdersByFilters(
       filters,
-      compositecolumnValue
+      compositecolumnValue,
+      sortField
     )
     for (const order of response) {
       order.date = date.format(order.date, dateFormat)

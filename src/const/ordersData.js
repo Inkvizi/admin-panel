@@ -44,14 +44,35 @@ function getHeaders() {
   return ['#', 'Дата', 'Статус', 'Позиций', 'Сумма', 'ФИО покупателя']
 }
 
+function getSortFieldName(fieldCaption) {
+  switch (fieldCaption) {
+    case '#':
+      return 'ID'
+    case 'Дата':
+      return 'date'
+    case 'Статус':
+      return 'status'
+    case 'Позиций':
+      return 'itemsCount'
+    case 'Сумма':
+      return 'sum'
+    case 'ФИО покупателя':
+      return 'customerName'
+  }
+}
+
+function isEmpty(object) {
+  return JSON.stringify(object) === JSON.stringify({})
+}
+
 export const orders = generateOrderList()
 export const ordersHeaders = getHeaders()
-export function ordersByFilter(filters, customerNameOrIdValue) {
+export function ordersByFilter(filters, customerNameOrIdValue, sortField) {
   const orders = generateOrderList()
   if (filters.length === 0 && customerNameOrIdValue.isEmpty) {
     return orders
   }
-  return orders.filter((order) => {
+  let filteredOrders = orders.filter((order) => {
     let result = true
     for (const filter of filters) {
       if (filter.isOperationAbove()) {
@@ -74,7 +95,22 @@ export function ordersByFilter(filters, customerNameOrIdValue) {
     }
     return result
   })
+  if (!isEmpty(sortField)) {
+    const orderDirection = sortField.isSortDirectionDown ? 1 : -1
+    const sortFieldName = getSortFieldName(sortField.caption)
+    filteredOrders = filteredOrders.sort((orderLeft, orderRight) => {
+      if (orderLeft[sortFieldName] > orderRight[sortFieldName]) {
+        return 1 * orderDirection
+      }
+      if (orderLeft[sortFieldName] < orderRight[sortFieldName]) {
+        return -1 * orderDirection
+      }
+      return 0
+    })
+  }
+  return filteredOrders
 }
+
 export function deleteOrders(ordersIds) {
   orderList = orderList.filter((order) => {
     return !ordersIds.includes(order.ID)

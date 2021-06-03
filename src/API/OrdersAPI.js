@@ -13,8 +13,12 @@ export const OrdersAPI = {
   getOrdersHeaders: function () {
     return ordersHeaders
   },
-  getOrdersByFilters: function (filters, customerNameOrIdValue) {
-    const filteredOrders = ordersByFilter(filters, customerNameOrIdValue)
+  getOrdersByFilters: function (filters, customerNameOrIdValue, sortField) {
+    const filteredOrders = ordersByFilter(
+      filters,
+      customerNameOrIdValue,
+      sortField
+    )
     return filteredOrders
   },
   deleteOrders: function (ordersIds) {

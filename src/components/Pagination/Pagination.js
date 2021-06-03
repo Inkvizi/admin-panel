@@ -33,7 +33,6 @@ export function Pagination({
   isNeedRefreshPage,
 }) {
   const pageNeighbourslocal = pageNeighbours > 2 ? 2 : pageNeighbours
-
   const [totalPages, setTotalPages] = useState(
     Math.ceil(totalRecords / pageLimit)
   )
