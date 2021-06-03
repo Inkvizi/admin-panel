@@ -18,6 +18,7 @@ export function Table({
   useEffect(() => {
     setCurrentOrders([...data])
   }, [])
+  console.log(selectedData)
 
   const onPageChanged = ({ currentPage, pageLimit }) => {
     const offset = (currentPage - 1) * pageLimit

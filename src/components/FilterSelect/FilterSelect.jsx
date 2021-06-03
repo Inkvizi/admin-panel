@@ -17,14 +17,13 @@ export function FilterSelect({
   }
 
   const optionsForSelect = values.map((value) => {
-    const onClick = () => onChangeFilter(value)
     return (
       <CheckBox
         key={value}
-        id={value}
+        name={value}
         value={value}
         checked={selectedValue.localeCompare(value) === 0}
-        onClick={onClick}
+        onChange={onChangeFilter}
       />
     )
   })

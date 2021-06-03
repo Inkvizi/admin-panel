@@ -97,14 +97,11 @@ export function Orders() {
   }
 
   const onSelectOrder = (order) => {
-    const index = selectedOrders.indexOf(order.ID)
-    if (index > -1) {
-      selectedOrders.splice(index, 1)
-      setSelectedOrders([...selectedOrders])
-    } else {
-      selectedOrders.push(order.ID)
-      setSelectedOrders([...selectedOrders])
-    }
+    setSelectedOrders(
+      selectedOrders.includes(order.ID)
+        ? selectedOrders.filter((id) => id !== order.ID)
+        : [...selectedOrders, order.ID]
+    )
   }
 
   const openOrderInfo = (order) => {

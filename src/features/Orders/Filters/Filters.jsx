@@ -59,11 +59,11 @@ export const Filters = ({ onFiltersChange }) => {
   const onChangeFilterSumAbove = ({ target: { value } }) => {
     setOrderSumAboveFilter(value)
   }
-  const onChangeFilterStatus = (key) => {
-    if (orderStatusFilter.localeCompare(key) === 0) {
-      setOrderStatusFilter('')
+  const onChangeFilterStatus = ({ target: { checked, name } }) => {
+    if (checked) {
+      setOrderStatusFilter(name)
     } else {
-      setOrderStatusFilter(key)
+      setOrderStatusFilter('')
     }
   }
   const isVisible = useSelector(getIsFilterPanelVisibleState)

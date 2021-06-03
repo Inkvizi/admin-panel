@@ -4,10 +4,13 @@ import cx from 'classnames'
 import { statuses } from '../../const/FilterStatusValues'
 
 export function ChangeStatusButtonMenu({ isShow, onMenuItemSelect }) {
+  const onClick = (status) => () => {
+    onMenuItemSelect(status)
+  }
+
   const statusForSelect = statuses.map((status) => {
-    const onClick = () => onMenuItemSelect(status)
     return (
-      <div className={styles.button} key={status} onClick={onClick}>
+      <div className={styles.button} key={status} onClick={onClick(status)}>
         {status}
       </div>
     )

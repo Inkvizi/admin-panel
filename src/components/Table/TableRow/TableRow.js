@@ -6,11 +6,11 @@ import { CANCELED } from '../../../const/status'
 const emDash = '\u2014'
 const Rub = ' \u20BD'
 
-export function TableRow({ order, onDblClick, onClick, checked }) {
+export function TableRow({ order, onDoubleClick, onClick, checked }) {
   return (
-    <tr className={styles.tr} onDoubleClick={onDblClick}>
+    <tr className={styles.tr} onDoubleClick={onDoubleClick}>
       <td className={styles.tdCheckBox}>
-        <CheckBox id={order.ID} checked={checked} onClick={onClick} />
+        <CheckBox name={order.ID} checked={checked} onChange={onClick} />
       </td>
       <td className={styles.td}>{order.ID}</td>
       <td className={styles.td}>{order.date}</td>
