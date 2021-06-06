@@ -5,7 +5,7 @@ import { FilterShowButton } from '../FilterShowButton/FilterShowButton'
 
 export function FilterHeaderPanel({ onFilter, value }) {
   const onClear = () => {
-    onFilter('')
+    onFilter({ target: { value: '' } })
   }
 
   return (

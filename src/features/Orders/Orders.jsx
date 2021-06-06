@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Route, useHistory } from 'react-router-dom'
-import { ModalRoute } from 'react-router-modal'
+import { Route, useHistory, useLocation } from 'react-router-dom'
 import './react-router-modal.css'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './Orders.module.css'
@@ -25,6 +24,20 @@ export function Orders() {
   }, [])
 
   const history = useHistory()
+  const location = useLocation()
+  useEffect(() => {
+    if (location.state && location.state.needRefresh === true) {
+      dispatch(fetchOrdersAll())
+        .then(unwrapResult)
+        .then(() => {
+          setIsNeedRefreshData(true)
+          setIsNeedRefreshData(false)
+        })
+        .catch((rejectedValueOrSerializedError) =>
+          console.log('inner catch', rejectedValueOrSerializedError)
+        )
+    }
+  }, [location])
   const orders = useSelector((state) => state.orders.entities)
 
   const [headerFilter, setHeaderFilter] = useState('')
@@ -36,7 +49,7 @@ export function Orders() {
   const applyFilterAndSort = (compositeFIlter, filters, sortField) => {
     return dispatch(
       fetchOrdersByFilters({
-        filters: orderFilters,
+        filters: filters,
         compositecolumnValue: compositeFIlter,
         sortField: sortField,
       })
@@ -149,10 +162,10 @@ export function Orders() {
           />
         )}
       />
-      <ModalRoute
+      <Route
         path="/orders/order/:number"
         parentPath="/orders"
-        component={OrderForm}
+        render={(properties) => <OrderForm {...properties} isModal={true} />}
       />
     </div>
   )

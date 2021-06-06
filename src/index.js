@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route } from 'react-router-dom'
-import { ModalContainer } from 'react-router-modal'
 import './index.css'
 import App from './components/App/App'
 import reportWebVitals from './reportWebVitals'
@@ -14,7 +13,6 @@ ReactDOM.render(
       <BrowserRouter>
         <Route path="/" component={App} />
       </BrowserRouter>
-      <ModalContainer />
     </Provider>
   </React.StrictMode>,
   document.querySelector('#root')

@@ -10,3 +10,11 @@
 .headerText {
   color: #BAD8F5;
 }
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  margin-left: auto;
+}

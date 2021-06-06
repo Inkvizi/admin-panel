@@ -1,7 +1,7 @@
 import faker from 'faker'
 import { statuses } from './FilterStatusValues'
-// import { dateFormat } from './dateFormat'
-// import dateFormatter from 'date-and-time'
+import { dateFormat } from './dateFormat'
+import dateFormatter from 'date-and-time'
 
 const ORDERD_COUNT = 200
 
@@ -65,7 +65,7 @@ function isEmpty(object) {
   return JSON.stringify(object) === JSON.stringify({})
 }
 
-export const orders = generateOrderList()
+export const orders = () => generateOrderList()
 export const ordersHeaders = getHeaders()
 export function ordersByFilter(filters, customerNameOrIdValue, sortField) {
   const orders = generateOrderList()
@@ -111,6 +111,13 @@ export function ordersByFilter(filters, customerNameOrIdValue, sortField) {
   return filteredOrders
 }
 
+export function orderByID(ID) {
+  const result = orderList.filter((order) => {
+    return order.ID === ID
+  })
+  return result.length === 1 ? { ...result[0] } : {}
+}
+
 export function deleteOrders(ordersIds) {
   orderList = orderList.filter((order) => {
     return !ordersIds.includes(order.ID)
@@ -122,5 +129,11 @@ export function changeStatusOrders(ordersIds, status) {
       order.status = status
     }
     return order
+  })
+}
+export function updateOrder(order) {
+  order.date = dateFormatter.parse(order.date, dateFormat)
+  orderList = orderList.map((orderSource) => {
+    return orderSource.ID !== order.ID ? orderSource : { ...order }
   })
 }

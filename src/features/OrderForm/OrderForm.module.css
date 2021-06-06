@@ -16,3 +16,15 @@
   from {right: -300px; opacity: 0}
   to {right: 0; opacity: 1}
 }
+
+.modal_wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: calc(100% - 40px);
+  height: calc(100vh - 100px);
+  background-color: rgba(0, 0, 0, 0.15);
+  display: flex;
+  padding: 50px 20px;
+  -webkit-overflow-scrolling: touch;
+}

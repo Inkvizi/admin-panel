@@ -11,4 +11,5 @@
 
 .tr:hover td {
   color: #6699ff;
+  cursor: pointer;
 }
