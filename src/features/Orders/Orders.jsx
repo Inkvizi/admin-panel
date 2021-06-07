@@ -27,7 +27,13 @@ export function Orders() {
   const location = useLocation()
   useEffect(() => {
     if (location.state && location.state.needRefresh === true) {
-      dispatch(fetchOrdersAll())
+      dispatch(
+        fetchOrdersByFilters({
+          filters: orderFilters,
+          compositecolumnValue: headerFilter,
+          sortField: sortField,
+        })
+      )
         .then(unwrapResult)
         .then(() => {
           setIsNeedRefreshData(true)
@@ -89,6 +95,7 @@ export function Orders() {
           fetchOrdersByFilters({
             filters: orderFilters,
             compositecolumnValue: headerFilter,
+            sortField: sortField,
           })
         )
       )
@@ -108,6 +115,7 @@ export function Orders() {
           fetchOrdersByFilters({
             filters: orderFilters,
             compositecolumnValue: headerFilter,
+            sortField: sortField,
           })
         )
           .then(unwrapResult)
