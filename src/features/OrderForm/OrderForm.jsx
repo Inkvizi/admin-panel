@@ -47,11 +47,9 @@ export function OrderForm({ isModal, match }) {
       })
       setIsOrderLoaded(true)
     }
-    console.log('orderItems =', order.items)
   }, [order])
 
   const onSubmit = async (data) => {
-    console.log('start submit')
     const orderForUpdate = { ...order }
     orderForUpdate.customerName = orderForModify.customerName
     orderForUpdate.status = orderForModify.status
@@ -74,7 +72,6 @@ export function OrderForm({ isModal, match }) {
     if (!isChanged) {
       setIsChanged(true)
     }
-    console.log('name = ' + name + '; value = ' + value)
     methods.setValue(name, value)
     orderForModify[name] = value
     setOrderForModify({ ...orderForModify })
