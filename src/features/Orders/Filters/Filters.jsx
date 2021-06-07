@@ -13,33 +13,35 @@ import { Filter } from './Filter'
 import { dateFormat } from '../../../const/dateFormat'
 
 export const Filters = ({ onFiltersChange }) => {
-  const [orderDateLessFilter, setOrderDateLessFilter] = useState('')
-  const [orderDateAboveFilter, setOrderDateAboveFilter] = useState('')
-  const [orderSumLessFilter, setOrderSumLessFilter] = useState('')
-  const [orderSumAboveFilter, setOrderSumAboveFilter] = useState('')
+  const [orderFilters, setOrderFilters] = useState({
+    dateLess: '',
+    dateAbove: '',
+    sumLess: '',
+    sumAbove: '',
+  })
   const [orderStatusFilter, setOrderStatusFilter] = useState('')
   const onFilterApplyButtonClick = () => {
     const filters = []
-    if (orderDateLessFilter) {
-      const dateValue = date.parse(orderDateLessFilter, dateFormat)
-      if (dateValue instanceof Date && !Number.isNaN(dateValue.getTime())) {
-        filters.push(new Filter('date', dateValue).setOperationLess())
-      }
-    }
-    if (orderDateAboveFilter) {
-      const dateValue = date.parse(orderDateAboveFilter, dateFormat)
+    if (orderFilters.dateLess) {
+      const dateValue = date.parse(orderFilters.dateLess, dateFormat)
       if (dateValue instanceof Date && !Number.isNaN(dateValue.getTime())) {
         filters.push(new Filter('date', dateValue).setOperationAbove())
       }
     }
-    if (orderSumLessFilter) {
+    if (orderFilters.dateAbove) {
+      const dateValue = date.parse(orderFilters.dateAbove, dateFormat)
+      if (dateValue instanceof Date && !Number.isNaN(dateValue.getTime())) {
+        filters.push(new Filter('date', dateValue).setOperationLess())
+      }
+    }
+    if (orderFilters.sumLess) {
       filters.push(
-        new Filter('sum', Number(orderSumLessFilter)).setOperationLess()
+        new Filter('sum', Number(orderFilters.sumLess)).setOperationAbove()
       )
     }
-    if (orderSumAboveFilter) {
+    if (orderFilters.sumAbove) {
       filters.push(
-        new Filter('sum', Number(orderSumAboveFilter)).setOperationAbove()
+        new Filter('sum', Number(orderFilters.sumAbove)).setOperationLess()
       )
     }
     if (orderStatusFilter) {
@@ -47,17 +49,9 @@ export const Filters = ({ onFiltersChange }) => {
     }
     onFiltersChange(filters)
   }
-  const onChangeFilterDateLess = ({ target: { value } }) => {
-    setOrderDateLessFilter(value)
-  }
-  const onChangeFilterDateAbove = ({ target: { value } }) => {
-    setOrderDateAboveFilter(value)
-  }
-  const onChangeFilterSumLess = ({ target: { value } }) => {
-    setOrderSumLessFilter(value)
-  }
-  const onChangeFilterSumAbove = ({ target: { value } }) => {
-    setOrderSumAboveFilter(value)
+  const handleChange = ({ target: { value, name } }) => {
+    orderFilters[name] = value
+    setOrderFilters({ ...orderFilters })
   }
   const onChangeFilterStatus = ({ target: { checked, name } }) => {
     if (checked) {
@@ -74,10 +68,11 @@ export const Filters = ({ onFiltersChange }) => {
       })}>
       <FilterDate
         caption="Дата оформления"
-        onChangeFilterLess={onChangeFilterDateLess}
-        onChangeFilterAbove={onChangeFilterDateAbove}
-        valueLess={orderDateLessFilter}
-        valueAbove={orderDateAboveFilter}
+        onChange={handleChange}
+        nameLess="dateLess"
+        nameAbove="dateAbove"
+        valueLess={orderFilters.dateLess}
+        valueAbove={orderFilters.dateAbove}
       />
       <FilterSelect
         className={styles.select}
@@ -89,10 +84,11 @@ export const Filters = ({ onFiltersChange }) => {
       />
       <FilterSum
         caption="Сумма заказа"
-        onChangeFilterLess={onChangeFilterSumLess}
-        onChangeFilterAbove={onChangeFilterSumAbove}
-        valueLess={orderSumLessFilter}
-        valueAbove={orderSumAboveFilter}
+        onChange={handleChange}
+        nameLess="sumLess"
+        nameAbove="sumAbove"
+        valueLess={orderFilters.sumLess}
+        valueAbove={orderFilters.sumAbove}
       />
       <FlatButton caption="Применить" onClick={onFilterApplyButtonClick} />
     </div>

@@ -4,28 +4,29 @@ import { Input } from '../Input/Input'
 
 export function FilterSum({
   caption,
-  onChangeFilterLess,
-  onChangeFilterAbove,
+  onChange,
+  nameLess,
+  nameAbove,
   valueLess,
   valueAbove,
 }) {
   return (
     <div className={styles._}>
       <Input
-        id="filterSumFrom"
+        id={nameLess}
         caption={caption}
         placeholder="₽"
         captionInside="от"
-        onChange={onChangeFilterAbove}
-        value={valueAbove}
+        onChange={onChange}
+        value={valueLess}
         className={styles.input_left}
       />
       <Input
-        id="filterSumTo"
+        id={nameAbove}
         placeholder="₽"
         captionInside="до"
-        onChange={onChangeFilterLess}
-        value={valueLess}
+        onChange={onChange}
+        value={valueAbove}
       />
     </div>
   )

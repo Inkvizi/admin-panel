@@ -4,28 +4,29 @@ import { Input } from '../Input/Input'
 
 export function FilterDate({
   caption,
-  onChangeFilterLess,
-  onChangeFilterAbove,
+  onChange,
+  nameLess,
+  nameAbove,
   valueLess,
   valueAbove,
 }) {
   return (
     <div className={styles._}>
       <Input
-        id="filterDateFrom"
+        id={nameLess}
         caption={caption}
         placeholder="dd.mm.yyyy"
         captionInside="c"
-        onChange={onChangeFilterAbove}
-        value={valueAbove}
+        onChange={onChange}
+        value={valueLess}
         className={styles.input_left}
       />
       <Input
-        id="filterDateTo"
+        id={nameAbove}
         placeholder="dd.mm.yyyy"
         captionInside="по"
-        onChange={onChangeFilterLess}
-        value={valueLess}
+        onChange={onChange}
+        value={valueAbove}
       />
     </div>
   )
