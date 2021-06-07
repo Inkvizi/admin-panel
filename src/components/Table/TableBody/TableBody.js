@@ -2,6 +2,7 @@ import React from 'react'
 import { TableRow } from '../TableRow/TableRow'
 
 export function TableBody({ data, onDoubleClick, onSelect, selectedData }) {
+  console.log('selecteddata =', selectedData)
   const onClick = (order) => () => {
     onSelect(order)
   }

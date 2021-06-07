@@ -9,11 +9,13 @@ export function Table({
   data,
   selectedData,
   isNeedRefreshData,
+  isAllSelected,
   onDoubleClick,
   onSelect,
   onDelete,
   onChangeStatus,
   onHeaderClick,
+  onHeaderSelectClick,
 }) {
   const [currentOrders, setCurrentOrders] = useState([])
 
@@ -37,7 +39,12 @@ export function Table({
           onDelete={onDelete}
           onChangeStatus={onChangeStatus}
         />
-        <TableHeader headerData={headerData} onClick={onHeaderClick} />
+        <TableHeader
+          headerData={headerData}
+          isAllSelected={isAllSelected}
+          onClick={onHeaderClick}
+          onHeaderSelectClick={onHeaderSelectClick}
+        />
         <TableBody
           data={currentOrders}
           onDoubleClick={onDoubleClick}

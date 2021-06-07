@@ -37,6 +37,7 @@ export function Orders() {
         .then(unwrapResult)
         .then(() => {
           setIsNeedRefreshData(true)
+          setIsAllSelected(false)
           setIsNeedRefreshData(false)
         })
         .catch((rejectedValueOrSerializedError) =>
@@ -49,6 +50,7 @@ export function Orders() {
   const [headerFilter, setHeaderFilter] = useState('')
   const [orderFilters, setOrderFilters] = useState([])
   const [selectedOrders, setSelectedOrders] = useState([])
+  const [isAllSelected, setIsAllSelected] = useState(false)
   const [isNeedRefreshData, setIsNeedRefreshData] = useState(false)
   const [sortField, setSortField] = useState({})
 
@@ -66,12 +68,14 @@ export function Orders() {
     setHeaderFilter(value)
     applyFilterAndSort(value, orderFilters, sortField)
     setSelectedOrders([])
+    setIsAllSelected(false)
   }
 
   const onFiltersChange = (filters) => {
     setOrderFilters(filters)
     applyFilterAndSort(headerFilter, filters, sortField)
     setSelectedOrders([])
+    setIsAllSelected(false)
   }
 
   const onHeaderClick = (header) => {
@@ -140,6 +144,19 @@ export function Orders() {
     )
   }
 
+  const handleSelectAllOrders = ({ target: { checked } }) => {
+    setIsAllSelected(checked)
+    if (checked) {
+      for (const order of orders) {
+        if (!selectedOrders.includes(order.ID)) {
+          selectedOrders.push(order.ID)
+        }
+      }
+      setSelectedOrders([...selectedOrders])
+    } else {
+      setSelectedOrders([])
+    }
+  }
   const openOrderInfo = (order) => {
     history.push(`/orders/order/${order.ID}`)
   }
@@ -161,12 +178,14 @@ export function Orders() {
             headerData={headers}
             data={orders}
             selectedData={selectedOrders}
+            isAllSelected={isAllSelected}
             isNeedRefreshData={isNeedRefreshData}
             onDoubleClick={openOrderInfo}
             onSelect={onSelectOrder}
             onDelete={onDeleteOrders}
             onChangeStatus={onChangeStatusOrders}
             onHeaderClick={onHeaderClick}
+            onHeaderSelectClick={handleSelectAllOrders}
           />
         )}
       />

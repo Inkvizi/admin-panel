@@ -3,7 +3,12 @@ import cx from 'classnames'
 import styles from './TableHeader.module.css'
 import { CheckBox } from '../../CheckBox/CheckBox'
 
-export function TableHeader({ headerData, onClick }) {
+export function TableHeader({
+  headerData,
+  onClick,
+  onHeaderSelectClick,
+  isAllSelected,
+}) {
   const [sorting, setSorting] = useState({
     caption: '',
     isSortDirectionDown: false,
@@ -24,7 +29,7 @@ export function TableHeader({ headerData, onClick }) {
     <thead className={styles._}>
       <tr>
         <th key="Выбор" className={styles.th}>
-          <CheckBox />
+          <CheckBox onChange={onHeaderSelectClick} checked={isAllSelected} />
         </th>
         {headerData.map((header) => {
           return (
