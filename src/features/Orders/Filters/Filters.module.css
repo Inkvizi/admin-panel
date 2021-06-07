@@ -10,3 +10,8 @@
 ._Hide {
   display: none;
 }
+
+.select {
+  width: 20%;
+  margin: 1em 1em;
+}

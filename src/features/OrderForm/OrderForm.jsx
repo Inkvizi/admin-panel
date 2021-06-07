@@ -40,14 +40,22 @@ export function OrderForm({ isModal, match }) {
   }, [targetElement, isModal])
   useEffect(() => {
     if (Object.keys(order).length > 0) {
-      setOrderForModify({ customerName: order.customerName })
+      setOrderForModify({
+        customerName: order.customerName,
+        status: order.status,
+        acceptCode: order.acceptCode,
+      })
       setIsOrderLoaded(true)
     }
+    console.log('orderItems =', order.items)
   }, [order])
 
   const onSubmit = async (data) => {
+    console.log('start submit')
     const orderForUpdate = { ...order }
     orderForUpdate.customerName = orderForModify.customerName
+    orderForUpdate.status = orderForModify.status
+    orderForUpdate.acceptCode = orderForModify.acceptCode
     await dispatch(updateOrder(orderForUpdate))
       .then(unwrapResult)
       .catch((rejectedValueOrSerializedError) =>
@@ -66,6 +74,7 @@ export function OrderForm({ isModal, match }) {
     if (!isChanged) {
       setIsChanged(true)
     }
+    console.log('name = ' + name + '; value = ' + value)
     methods.setValue(name, value)
     orderForModify[name] = value
     setOrderForModify({ ...orderForModify })

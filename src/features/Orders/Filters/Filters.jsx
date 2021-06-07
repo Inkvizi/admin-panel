@@ -80,6 +80,7 @@ export const Filters = ({ onFiltersChange }) => {
         valueAbove={orderDateAboveFilter}
       />
       <FilterSelect
+        className={styles.select}
         caption="Статус заказа"
         defaultValue="Любой"
         values={statuses}

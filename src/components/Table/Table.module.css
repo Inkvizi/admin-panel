@@ -12,7 +12,7 @@
   text-align: left;
 }
 
-table th:first-child,
+.table th:first-child,
 td:first-child {
   width: 16px;
   padding: 8px 0px 8px 12px;

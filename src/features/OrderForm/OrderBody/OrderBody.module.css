@@ -3,6 +3,50 @@
   flex-direction: column;
   padding: 8px 16px;
   flex-grow: 1;
+  overflow-y: auto;
+}
+
+.table {
+  background: white;
+  max-width: 100%;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  margin-top: 15px;
+}
+
+.tr {
+  border-bottom: 1px solid #EBF0F5;
+  height: 40px;
+}
+
+.thead {
+  background: #459df5;
+}
+
+.tfoot {
+  background: #EBF0F5;
+}
+
+.th {
+  font-weight: normal;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  background: #459df5;
+  cursor: pointer;
+  user-select: none;
+}
+
+.tr:hover td {
+  color: #6699ff;
+}
+
+.footer {
+  display: flex;
+  margin-left: auto;
+  padding-right: 12px;
+  width: fit-content;
 }
 
 ._loading{

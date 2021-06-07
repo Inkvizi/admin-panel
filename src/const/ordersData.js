@@ -8,13 +8,20 @@ const ORDERD_COUNT = 200
 faker.locale = 'ru'
 
 function generateOrder() {
-  return {
+  const order = {
     ID: faker.datatype.number({
       min: 10_000,
       max: 500_000,
     }),
     date: faker.date.past(),
     status: faker.random.arrayElement(statuses),
+    loyalty: faker.random.arrayElement([
+      'новичек',
+      'средний',
+      'продвинутый',
+      'эксперт',
+    ]),
+    acceptCode: faker.datatype.number({ min: 1000, max: 9999 }),
     itemsCount: faker.datatype.number({
       min: 1,
       max: 30,
@@ -22,9 +29,39 @@ function generateOrder() {
     sum: faker.datatype.number({ min: 1, max: 20_000, precision: 0.01 }),
     customerName: `${faker.name.lastName()} ${faker.name.firstName()} ${faker.name.middleName()}`,
   }
+  generateOrderData(order)
+  return order
+}
+
+function generateOrderData(order) {
+  const minPrice = Math.round(order.sum / order.itemsCount / 3)
+  const maxPrice = Math.round((order.sum / order.itemsCount) * 2)
+  let itemsSum = 0
+  for (let counter = 0; counter < order.itemsCount; counter++) {
+    const orderItem = {
+      ID: faker.datatype.number({
+        min: 500_001,
+        max: 10_000_000,
+      }),
+      orderID: order.ID,
+      vendorCode: faker.random.alphaNumeric(8),
+      name: faker.commerce.productName(),
+      price: faker.datatype.number({
+        min: minPrice,
+        max: maxPrice,
+        precision: 0.01,
+      }),
+    }
+    if (counter === order.itemsCount - 1) {
+      orderItem.price = order.sum - itemsSum
+    }
+    itemsSum += itemsSum + orderItem.price
+    orderDataList.push(orderItem)
+  }
 }
 
 let orderList = []
+const orderDataList = []
 
 function cloneOrderArray(sourceArray) {
   return sourceArray.map((data) => ({ ...data }))
@@ -115,7 +152,17 @@ export function orderByID(ID) {
   const result = orderList.filter((order) => {
     return order.ID === ID
   })
-  return result.length === 1 ? { ...result[0] } : {}
+  if (result.length === 1) {
+    const order = { ...result[0] }
+    order.items = orderDataList
+      .filter((item) => {
+        return item.orderID === ID
+      })
+      .map((item) => ({ ...item }))
+    return order
+  } else {
+    return {}
+  }
 }
 
 export function deleteOrders(ordersIds) {
