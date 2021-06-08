@@ -2,4 +2,19 @@
   width: 100%;
   flex-direction: column;
   flex-wrap: wrap;
+  background-color: #fefefe;
+  padding: 2em 3em;
+}
+
+.dark {
+  filter: invert(100%);
+}
+
+* {
+  background-color: inherit;
+}
+
+img:not([src*='.svg']),
+video {
+  filter: invert(100%);
 }

@@ -4,6 +4,7 @@ import './react-router-modal.css'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './Orders.module.css'
 import { unwrapResult } from '@reduxjs/toolkit'
+import cx from 'classnames'
 import { Table } from '../../components/Table/Table'
 import { OrderForm } from '../OrderForm/OrderForm'
 import { Header } from '../../components/Header/Header'
@@ -16,6 +17,7 @@ import {
   deleteOrders,
   changeStatusOrders,
 } from './ordersSlice'
+import { darkTheme } from '../../const/themes'
 
 export function Orders() {
   const dispatch = useDispatch()
@@ -46,6 +48,7 @@ export function Orders() {
     }
   }, [location])
   const orders = useSelector((state) => state.orders.entities)
+  const theme = useSelector((state) => state.ordersView.theme)
 
   const [headerFilter, setHeaderFilter] = useState('')
   const [orderFilters, setOrderFilters] = useState([])
@@ -163,7 +166,7 @@ export function Orders() {
 
   const headers = OrdersAPI.getOrdersHeaders()
   return (
-    <div className={styles._}>
+    <div className={cx(styles._, { [styles.dark]: theme === darkTheme })} id="">
       <Header caption="Cписок заказов" />
       <FilterHeaderPanel
         onFilter={onCompositeFilterChange}

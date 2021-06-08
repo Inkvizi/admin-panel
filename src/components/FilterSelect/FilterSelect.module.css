@@ -11,6 +11,7 @@
 
 .select {
   display: flex;
+  background: var(--main-background-color);
   border: 1px solid var(--border-color);
   box-sizing: border-box;
   border-radius: 4px;
@@ -46,6 +47,7 @@
 .overSelect {
   display: flex;
   position: absolute;
+  background-color: unset;
   left: 0;
   right: 0;
   top: 0;
