@@ -1,0 +1,17 @@
+._ {
+  display: flex;
+  width: 100%;
+  justify-content: left;
+  background: #ebf0f5;
+  margin-top: 1em;
+  height: 7em;
+}
+
+._Hide {
+  display: none;
+}
+
+.select {
+  width: 20%;
+  margin: 1em 1em;
+}

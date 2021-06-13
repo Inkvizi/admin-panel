@@ -1,9 +1,9 @@
 import './App.css'
-import { Page } from '../Page/Page'
+import { Orders } from 'features/Orders/Orders'
 import React from 'react'
 
 function App() {
-  return <Page></Page>
+  return <Orders />
 }
 
 export default App

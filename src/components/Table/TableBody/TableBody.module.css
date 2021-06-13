@@ -1,0 +1,15 @@
+._ {
+  display: flex;
+}
+
+.td {
+  border-bottom: 1px solid #ebf0f5;
+  padding: 9px 8px;
+  transition: 0.3s linear;
+  cursor: pointer;
+}
+
+.tr:hover td {
+  color: #6699ff;
+  cursor: pointer;
+}

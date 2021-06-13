@@ -1,7 +1,14 @@
 ._ {
   display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.theme {
+  display: flex;
   justify-content: right;
   align-items: center;
+  cursor: pointer;
 }
 
 .label {

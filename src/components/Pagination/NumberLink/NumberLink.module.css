@@ -1,0 +1,11 @@
+._ {
+  color: #459DF5;
+}
+
+._Active {
+	color: white;
+}
+
+._:hover {
+	background: transparent;
+}

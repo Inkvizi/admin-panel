@@ -1,6 +1,7 @@
 ._ {
   display: flex;
+  width: 100%;
+  align-items: center;
   flex-wrap: wrap;
   height: 2em;
-  margin: 2em 3em;
 }

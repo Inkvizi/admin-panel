@@ -2,10 +2,21 @@
   --placeholder-color: #459df5;
 }
 
-.page {
+#root {
+  display: flex;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  width: 100%;
   font-family: Ubuntu;
   font-size: 13px;
   line-height: 1.2em;
+}
+
+div {
+  display: flex;
 }
 
 ::-webkit-input-placeholder {
