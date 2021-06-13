@@ -20,7 +20,7 @@ export function Table({
   const [currentOrders, setCurrentOrders] = useState([])
 
   useEffect(() => {
-    setCurrentOrders([...data])
+    setCurrentOrders(data)
   }, [])
 
   const onPageChanged = ({ currentPage, pageLimit }) => {

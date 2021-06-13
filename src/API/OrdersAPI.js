@@ -6,7 +6,7 @@ import {
   deleteOrders,
   changeStatusOrders,
   updateOrder,
-} from '../const/ordersData'
+} from 'const/ordersData'
 
 export const OrdersAPI = {
   getAllOrders: function () {

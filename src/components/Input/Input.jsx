@@ -18,8 +18,10 @@ export const Input = React.forwardRef(
     },
     reference
   ) => {
-    const onClear = () => {
-      onChange({ target: { value: '', name: id } })
+    const onClear = (event) => {
+      event.target.value = ''
+      event.target.name = id
+      onChange(event)
     }
     return (
       <div className={cx(styles._, className)}>

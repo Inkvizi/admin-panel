@@ -1,10 +1,10 @@
 import React from 'react'
 import styles from './TableRow.module.css'
 import { CheckBox } from '../../CheckBox/CheckBox'
-import { CANCELED } from '../../../const/status'
+import { CANCELED } from 'const/status'
 
-const emDash = '\u2014'
-const Rub = '\u20BD'
+const EM_DASH = '\u2014'
+const RUB = '\u20BD'
 
 export function TableRow({ order, onDoubleClick, onClick, checked }) {
   return (
@@ -16,12 +16,12 @@ export function TableRow({ order, onDoubleClick, onClick, checked }) {
       <td className={styles.td}>{order.date}</td>
       <td className={styles.td}>{order.status}</td>
       <td className={styles.td}>
-        {order.status === CANCELED ? emDash : order.itemsCount}
+        {order.status === CANCELED ? EM_DASH : order.itemsCount}
       </td>
       <td className={styles.td}>
         {order.status === CANCELED
-          ? emDash
-          : `${Number(order.sum).toLocaleString('ru')} ${Rub}`}
+          ? EM_DASH
+          : `${Number(order.sum).toLocaleString('ru')} ${RUB}`}
       </td>
       <td className={styles.td}>{order.customerName}</td>
     </tr>

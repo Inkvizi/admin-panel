@@ -3,10 +3,8 @@ import React from 'react'
 
 export function ApplyButton(properties) {
   return (
-    <div className={styles._}>
-      <button className={styles.button} type="submit">
-        Сохранить
-      </button>
-    </div>
+    <button className={styles._} type="submit">
+      Сохранить
+    </button>
   )
 }

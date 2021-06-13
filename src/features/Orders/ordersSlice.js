@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import date from 'date-and-time'
 import { OrdersAPI } from '../../API/OrdersAPI'
-import { dateFormat } from '../../const/dateFormat'
+import { dateFormat } from 'const/dateFormat'
 
 export const fetchOrdersAll = createAsyncThunk(
   'orders/fetchAll',

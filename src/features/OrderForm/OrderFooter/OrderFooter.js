@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './OrderFooter.module.css'
-import { ApplyButton } from '../../../components/ApplyButton/ApplyButton'
+import { ApplyButton } from 'components/ApplyButton/ApplyButton'
 
 export function OrderFooter() {
   return (

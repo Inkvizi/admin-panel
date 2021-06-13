@@ -14,24 +14,26 @@ export function TableFooter({
   onDelete,
   onChangeStatus,
 }) {
-  const [deleteClicked, setDeleteClicked] = useState(false)
-  const [changeStatusClicked, setChangeStatusClicked] = useState(false)
+  const [isDeleteButtonClicked, setIsDeleteButtonClicked] = useState(false)
+  const [isChangeStatusButtonClicked, setIsChangeStatusButtonClicked] =
+    useState(false)
 
   const onDeleteButtonClick = () => {
-    setDeleteClicked(true)
+    setIsDeleteButtonClicked(true)
   }
-  const onDeleteMenuSelect = (value) => {
-    setDeleteClicked(false)
-    if (value) {
-      onDelete()
-    }
+  const handleDeleteClick = () => {
+    setIsDeleteButtonClicked(false)
+    onDelete()
+  }
+  const handleCancelClick = () => {
+    setIsDeleteButtonClicked(false)
   }
 
   const onChangeStatusClick = () => {
-    setChangeStatusClicked(!changeStatusClicked)
+    setIsChangeStatusButtonClicked(!isChangeStatusButtonClicked)
   }
   const onChangeStatusMenuSelect = (value) => {
-    setChangeStatusClicked(false)
+    setIsChangeStatusButtonClicked(false)
     onChangeStatus(value)
   }
 
@@ -45,7 +47,7 @@ export function TableFooter({
             </div>
             <div className={styles.menu}>
               <ChangeStatusButtonMenu
-                isShow={changeStatusClicked}
+                isShow={isChangeStatusButtonClicked}
                 onMenuItemSelect={onChangeStatusMenuSelect}
               />
               <ChangeStatusButton
@@ -56,8 +58,9 @@ export function TableFooter({
             <div className={styles.menu}>
               <DeleteButtonMenu
                 recordsCount={selectedRecords}
-                isShow={deleteClicked}
-                onMenuItemSelect={onDeleteMenuSelect}
+                isShow={isDeleteButtonClicked}
+                onDeleteClick={handleDeleteClick}
+                onCancelClick={handleCancelClick}
               />
               <DeleteButton
                 disabled={selectedRecords === 0}

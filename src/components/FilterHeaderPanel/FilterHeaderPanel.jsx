@@ -4,8 +4,9 @@ import { SearchBox } from '../SearchBox/SearchBox'
 import { FilterShowButton } from '../FilterShowButton/FilterShowButton'
 
 export function FilterHeaderPanel({ onFilter, value }) {
-  const onClear = () => {
-    onFilter({ target: { value: '' } })
+  const onClear = (event) => {
+    event.target.value = ''
+    onFilter(event)
   }
 
   return (

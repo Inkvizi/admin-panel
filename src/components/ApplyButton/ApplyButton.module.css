@@ -1,24 +1,19 @@
 ._ {
   display: flex;
-  margin-left: 16px;
-  
-}
-
-.button {
-  display: flex;
   border: none;
   color: white;
-  background: #459DF5;
+  background: #459df5;
   cursor: pointer;
   border-radius: 4px;
   height: 32px;
   padding: 8px 16px;
+  margin-left: 16px;
 }
 
-.button:focus {
+._:focus {
   outline: none;
 }
-.button::before {
+._::before {
   position: relative;
   cursor: pointer;
   width: 16px;

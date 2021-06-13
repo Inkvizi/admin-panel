@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { lightTheme } from '../../const/themes'
+import { lightTheme } from 'const/themes'
 
 export const ordersrViewSlice = createSlice({
   name: 'ordersView',

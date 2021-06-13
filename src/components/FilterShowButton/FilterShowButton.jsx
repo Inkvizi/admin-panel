@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { toggleFilterPanelVisible } from '../../features/Orders/ordersViewSlice'
+import { toggleFilterPanelVisible } from 'features/Orders/ordersViewSlice'
 import styles from './FilterShowButton.module.css'
 
 export function FilterShowButton() {

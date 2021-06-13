@@ -5,10 +5,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import styles from './Orders.module.css'
 import { unwrapResult } from '@reduxjs/toolkit'
 import cx from 'classnames'
-import { Table } from '../../components/Table/Table'
+import { Table } from 'components/Table/Table'
 import { OrderForm } from '../OrderForm/OrderForm'
-import { Header } from '../../components/Header/Header'
-import { FilterHeaderPanel } from '../../components/FilterHeaderPanel/FilterHeaderPanel'
+import { Header } from 'components/Header/Header'
+import { FilterHeaderPanel } from 'components/FilterHeaderPanel/FilterHeaderPanel'
 import { Filters } from './Filters/Filters'
 import { OrdersAPI } from '../../API/OrdersAPI'
 import {
@@ -17,7 +17,7 @@ import {
   deleteOrders,
   changeStatusOrders,
 } from './ordersSlice'
-import { darkTheme } from '../../const/themes'
+import { darkTheme } from 'const/themes'
 
 export function Orders() {
   const dispatch = useDispatch()

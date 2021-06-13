@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import styles from './Theme.module.css'
 import { ThemeMenu } from './ThemeMenu'
-import { changeTheme } from '../../features/Orders/ordersViewSlice'
-import { lightTheme, darkTheme } from '../../const/themes'
+import { changeTheme } from 'features/Orders/ordersViewSlice'
+import { lightTheme, darkTheme } from 'const/themes'
 
 export function Theme() {
   const [changeThemeClicked, setChangeThemeClicked] = useState(false)

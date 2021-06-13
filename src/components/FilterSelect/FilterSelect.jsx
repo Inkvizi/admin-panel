@@ -11,7 +11,7 @@ export const FilterSelect = React.forwardRef(
   ) => {
     const [isExpanded, setIsExpanded] = useState(false)
 
-    const showCheckboxes = () => {
+    const handleSelectClick = () => {
       setIsExpanded(!isExpanded)
     }
 
@@ -37,7 +37,7 @@ export const FilterSelect = React.forwardRef(
         <label className={styles.caption} htmlFor="selectBoxFilter">
           {caption}
         </label>
-        <div className={styles.selectBox} onClick={showCheckboxes}>
+        <div className={styles.selectBox} onClick={handleSelectClick}>
           <select className={styles.select} id="selectBoxFilter">
             <option>{selectedValue || defaultValue}</option>
           </select>

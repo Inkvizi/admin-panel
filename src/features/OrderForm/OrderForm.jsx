@@ -66,10 +66,11 @@ export function OrderForm({ isModal, match }) {
   const handleClose = (event) => {
     event.preventDefault()
     history.push(`/orders/`, { needRefresh: false })
-    return false
   }
   const handleChange = ({ target: { name, value } }) => {
+    console.log(name, value)
     if (!isChanged) {
+      console.log('setIsChanged')
       setIsChanged(true)
     }
     methods.setValue(name, value)

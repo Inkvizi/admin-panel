@@ -1,9 +1,9 @@
 import React from 'react'
 import styles from './OrderBody.module.css'
 import { useFormContext } from 'react-hook-form'
-import { Input } from '../../../components/Input/Input'
-import { statuses } from '../../../const/FilterStatusValues.js'
-import { FilterSelect } from '../../../components/FilterSelect/FilterSelect'
+import { Input } from 'components/Input/Input'
+import { statuses } from 'const/FilterStatusValues.js'
+import { FilterSelect } from 'components/FilterSelect/FilterSelect'
 const Rub = '\u20BD'
 
 export function OrderBody({
@@ -17,11 +17,9 @@ export function OrderBody({
     formState: { errors },
   } = useFormContext()
   const onChangeFilterStatus = ({ target: { checked, name } }) => {
-    if (checked) {
-      onChange({ target: { name: 'status', value: name } })
-    } else {
-      onChange({ target: { name: 'status', value: order.status } })
-    }
+    onChange({
+      target: { name: 'status', value: checked ? name : order.status },
+    })
   }
   return isOrderLoaded ? (
     <div className={styles._}>
